@@ -184,37 +184,115 @@
 # print(countWord(s))
 
 
-def validate_number(s):
-    if not s:
-        return "Invalid"
+# def validate_number(s):
+#     if not s:
+#         return "Invalid"
 
-    # handle negative
-    if s[0] == '-':
-        s = s[1:]
+#     # handle negative
+#     if s[0] == '-':
+#         s = s[1:]
 
-    if not s:
-        return "Invalid"
+#     if not s:
+#         return "Invalid"
 
-    dot_count = s.count('.')
+#     dot_count = s.count('.')
 
-    if dot_count == 0:
-        # Integer check
-        for ch in s:
-            if ch < '0' or ch > '9':
-                return "Invalid"
-        return "Integer"
+#     if dot_count == 0:
+#         # Integer check
+#         for ch in s:
+#             if ch < '0' or ch > '9':
+#                 return "Invalid"
+#         return "Integer"
 
-    elif dot_count == 1:
-        # Float check
-        left, right = s.split('.')
+#     elif dot_count == 1:
+#         # Float check
+#         left, right = s.split('.')
 
-        if left == "" or right == "":
-            return "Invalid"
+#         if left == "" or right == "":
+#             return "Invalid"
 
-        if not left.isdigit() or not right.isdigit():
-            return "Invalid"
+#         if not left.isdigit() or not right.isdigit():
+#             return "Invalid"
 
-        return "Float"
+#         return "Float"
 
-    else:
-        return "Invalid"
+#     else:
+#         return "Invalid"
+
+#validate email address
+# def validEmail(s):
+#     if '@' not in s:
+#         return False
+#     if s.count('@')!=1:
+#         return False
+#     at_pos = s.index('@')
+
+#     if at_pos ==0 or at_pos == len(s)-1:
+#         return False
+    
+#     if'.' not in s[at_pos:]:
+#         return False
+#     if s.endswith('.'):
+#         return False
+#     return True
+
+# s =[
+#     "abc@gmail.com",
+#     "abc@gmail",
+#     "@gmail.com",
+#     "abc@gmail.",
+#     "abc@@gmail.com"
+#  ]
+
+# for e in s :
+#     print(e,"->", validEmail(e))
+
+
+# def extractNo(s):
+#     curr = ""
+#     new_list = []
+#     for i in s:
+#         if i.isdigit():
+#             curr = curr + i
+#         else:
+#             if curr != "":
+#                 new_list.append(int(curr))
+#             curr = ""
+#     if curr != "":
+#         new_list.append(int(curr))
+#     return new_list
+
+# stri = "a12b34c5"
+# print(extractNo(stri))
+
+#convert string to camel Case
+# def camel_case(s):
+#     new_s=""
+#     cap_next = False
+#     for i in s:
+#         if i== " " or i=="_" or i=="-":
+#             cap_next=True
+#         else:
+#             if cap_next:
+#                 new_s += i.upper()
+#                 cap_next = False
+#             else:
+#                 new_s += i.lower()
+#     return new_s
+
+# print(camel_case("hello world program"))
+# print(camel_case("convert_to_camel case"))
+
+
+# count frequency of each character in a string
+def countFreq(s):
+    new_dict = {}
+    for i in s:
+        if i in new_dict:
+            new_dict[i]+=1
+        else:
+            new_dict[i]=1
+    return new_dict
+
+print(countFreq("aabbbdee"))
+
