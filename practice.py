@@ -285,14 +285,80 @@
 
 
 # count frequency of each character in a string
-def countFreq(s):
-    new_dict = {}
-    for i in s:
-        if i in new_dict:
-            new_dict[i]+=1
-        else:
-            new_dict[i]=1
-    return new_dict
+# def countFreq(s):
+#     new_dict = {}
+#     for i in s:
+#         if i in new_dict:
+#             new_dict[i]+=1
+#         else:
+#             new_dict[i]=1
+#     return new_dict
 
-print(countFreq("aabbbdee"))
+# print(countFreq("aabbbdee"))
 
+#count first non repeating character in a string
+# def countNonR(s):
+#     new_dict={}
+#     for i in s:
+#         if i in new_dict:
+#             new_dict[i] +=1
+#         else:
+#             new_dict[i]=1
+#     for i in new_dict:
+#         if new_dict[i]==1:
+#             return i
+#     return None
+    
+# print(countNonR("aabbccde"))
+            
+
+# check if an string is an isogram
+#isogram wo hote jinme repeating character ni hota
+
+# def isogram(s):
+#     return len(set(s))==len(s)
+
+# print(isogram('Machine'))
+# print(isogram('Hello'))
+# print("\n-----------\n")
+# def is_iso(s):
+#     new_set = set()
+#     for i in s:
+#         if i in new_set:
+#             return False
+#         new_set.add(i)
+#     return True
+
+# print(is_iso('Machine'))
+# print(is_iso('Hello'))
+
+
+#Longest substring without non repeating characters
+# def longSubstr(s):
+#     left=0, max_length=0
+#     newSet= set()
+#     for i in range(len(s)):
+#         while s[i] in newSet:
+#             newSet.remove(s[left])
+#             left=left+1
+#         newSet.add(s[i])
+#         max_length=max(max_length, i-left+1)
+#     return max_length
+
+# print(longSubstr("abcabcbb"))  # 3
+# print(longSubstr("bbbbb"))     # 1
+# print(longSubstr("pwwkew"))    # 3
+
+#check if one string is a subsequence of another
+def subseq(s1,s2):
+    i=0
+    j=0
+    while i<len(s1) and j<len(s2):
+        if s1[i]==s2[j]:
+            i+=1
+        j+=1
+    return i == len(s1)
+
+print(subseq("abc","aXwbfYc"))
+
+    
