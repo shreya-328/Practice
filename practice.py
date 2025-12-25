@@ -494,23 +494,58 @@
 
 #Merge two strings alternately
 
-def mergeStr(s1,s2):
-    res=""
-    i=0
-    j=0
-    while i< len(s1) and j<len(s2):
-        res=res+s1[i]+s2[j]
-        i+=1
-        j+=1
+# def mergeStr(s1,s2):
+#     res=""
+#     i=0
+#     j=0
+#     while i< len(s1) and j<len(s2):
+#         res=res+s1[i]+s2[j]
+#         i+=1
+#         j+=1
 
-    while i<len(s1):
-        res=res+s1[i]
-        i+=1
+#     while i<len(s1):
+#         res=res+s1[i]
+#         i+=1
 
-    while j<len(s2):
-        res=res+s2[j]
-        j+=1
+#     while j<len(s2):
+#         res=res+s2[j]
+#         j+=1
 
-    return res
+#     return res
 
-print(mergeStr("abc","pqrst"))
+# print(mergeStr("abc","pqrst"))
+
+# permutations of stirng
+# def perm(s1):
+#     if len(s1)==1:
+#         return [s1]
+
+#     res = []
+#     for i in range(len(s1)):
+#         fixed = s1[i]
+#         remaining = s1[:i]+s1[i+1:]
+#         for j in perm(remaining):
+#             res.append(fixed+j)
+        
+#     return res
+
+
+# print(perm("ac"))
+
+# edit distance
+def edit_dist(s1,s2):
+
+    if len(s1) ==0:
+        return len(s2)
+    if len(s2)==0:
+        return len(s1)
+    if s1[-1] == s2[-1]:
+        return edit_dist(s1[:-1], s2[:-1])
+    return 1 + min(
+        edit_dist(s1, s2[:-1]),    # insert
+        edit_dist(s1[:-1], s2),    # delete
+        edit_dist(s1[:-1], s2[:-1])# replace
+    )
+
+print(edit_dist("cat", "cut"))   # 1
+print(edit_dist("kitten", "sitting"))  # 3
