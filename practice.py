@@ -350,15 +350,167 @@
 # print(longSubstr("pwwkew"))    # 3
 
 #check if one string is a subsequence of another
-def subseq(s1,s2):
+# def subseq(s1,s2):
+#     i=0
+#     j=0
+#     while i<len(s1) and j<len(s2):
+#         if s1[i]==s2[j]:
+#             i+=1
+#         j+=1
+#     return i == len(s1)
+
+# print(subseq("abc","aXwbfYc"))
+
+# Phase 4 - String Compression
+
+# def comp_str (s):
+#     if not s:
+#         return ""
+    
+#     result = ""
+#     count = 1
+
+#     for i in range(1,len(s)):
+#         if s[i]==s[i-1]:
+#             count+=1
+#         else:
+#             result += s[i-1] + str (count)
+#             count = 1
+
+#     result += s[-1]+str(count)
+
+#     return result
+
+
+# print(comp_str("aaabbc"))
+# print(comp_str("abcd"))
+# print(comp_str("aaaaaavvv"))
+
+# def substr(s, sub):
+#     i=0
+#     count=0
+#     while i <= len(s) - len(sub):
+#         if s[i:i+len(sub)] == sub:
+#             i = i+len(sub)
+#             count = count+1
+#         else:
+#             i=i+1
+#     return count
+
+# print(substr("abababa","aba"))
+
+#replcce a substring with a new substring in a string
+# def newsub(s,o,n):
+#     i=0
+#     result=""
+#     while i <= len(s)-len(o):
+#         if s[i:i+len(o)] == o:
+#             result += n
+#             i+= len(o)
+#         else:
+#             result += s[i]
+#             i+=1
+
+#     result += s[i:]
+#     return result
+
+# print(newsub("hello world","world","python"))
+
+#extract substring between the characters
+
+# def substrbw(s,start,end):
+#     cs=-1
+#     ce=-1
+#     for i in range(len(s)):
+#         if s[i] == start and cs==-1:
+#             cs=i
+#         elif s[i] == end and ce==-1: 
+#             ce=i
+#             break
+#     if cs==-1 or ce==-1 or ce<cs:
+#         return ""
+#     res= s[cs:ce+1]
+#     return res
+
+# print(substrbw("abc[d]e","[","]"))
+
+# check whether a string is a rotation of another string or not
+# def is_rotation(s1,s2):
+#     if len(s1)!=len(s2):
+#         return False
+#     return s2 in (s1+s1)
+
+# print(is_rotation("abcd","cdab"))
+
+#compare two string without using .equals()
+# def compstr(s1,s2):
+#     if len(s1)!=len(s2):
+#         return False
+#     for i in range(len(s1)):
+#         if s1[i]!=s2[i]:
+#             return False
+#     return True
+
+# print(compstr("hi","hil"))
+
+# find position of a substring in a string
+# def poss(s1,s2):
+#     i=0
+#     while i <= len(s1)-len(s2):
+#         if s1[i:i+len(s2)]==s2:
+#             return i
+#         i+=1
+#     return -1
+
+# print(poss("hello world","world"))
+
+# find all unique character in a string
+
+# def unichar(s1):
+#     i=0
+#     freq={}
+#     for i in s1:
+#         if i in freq:
+#             freq[i]+=1
+#         else:
+#             freq[i]=1
+#     result =""
+#     for i in s1:
+#         if freq[i]==1:
+#             result = result+i
+#     return result
+
+# print(unichar("aabbccdef"))
+
+#rotate a string left by k characters
+# def rotatestr(s1,k):
+#     k=k%len(s1)
+#     left=s1[0:k]
+#     right=s1[k:]
+#     return right+left
+
+
+# print(rotatestr("abcd",6))
+
+#Merge two strings alternately
+
+def mergeStr(s1,s2):
+    res=""
     i=0
     j=0
-    while i<len(s1) and j<len(s2):
-        if s1[i]==s2[j]:
-            i+=1
+    while i< len(s1) and j<len(s2):
+        res=res+s1[i]+s2[j]
+        i+=1
         j+=1
-    return i == len(s1)
 
-print(subseq("abc","aXwbfYc"))
+    while i<len(s1):
+        res=res+s1[i]
+        i+=1
 
-    
+    while j<len(s2):
+        res=res+s2[j]
+        j+=1
+
+    return res
+
+print(mergeStr("abc","pqrst"))
