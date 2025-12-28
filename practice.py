@@ -554,14 +554,37 @@
 # New Question as per the pattern of DSA
 # a. ARRAY
 #  TWO SUMS
-def twoSum(nums, target):
-    for i in range(len(nums)):
-        for j in range(i + 1, len(nums)):
-            if nums[i] + nums[j] == target:
-                return [i, j]
+# def twoSum(nums, target):
+#     for i in range(len(nums)):
+#         for j in range(i + 1, len(nums)):
+#             if nums[i] + nums[j] == target:
+#                 return [i, j]
 
 
-# test cases
-print(twoSum([2, 7, 11, 15], 9))   # [0, 1]
-print(twoSum([3, 2, 4], 6))        # [1, 2]
-print(twoSum([3, 3], 6))           # [0, 1]
+# # test cases
+# print(twoSum([2, 7, 11, 15], 9))   # [0, 1]
+# print(twoSum([3, 2, 4], 6))        # [1, 2]
+# print(twoSum([3, 3], 6))           # [0, 1]
+
+#best time to buy & sell stock
+def bass(a1):
+    # buy=a1[0]
+    # store = 0
+    # for i in a1:
+    #     if i<buy:
+    #         buy=i
+    #     else:
+    #         profit = i - buy
+    #         if profit > store:
+    #             store = profit
+    # return store
+    min_price = float('inf')
+    max_profit = 0
+
+    for i in a1:
+        min_price = min(min_price, i)
+        max_profit = max(max_profit, i-min_price)
+    return max_profit
+    
+
+print(bass([7,1,5,3,6,4]))
