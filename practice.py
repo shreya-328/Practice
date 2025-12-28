@@ -567,24 +567,42 @@
 # print(twoSum([3, 3], 6))           # [0, 1]
 
 #best time to buy & sell stock
-def bass(a1):
-    # buy=a1[0]
-    # store = 0
-    # for i in a1:
-    #     if i<buy:
-    #         buy=i
-    #     else:
-    #         profit = i - buy
-    #         if profit > store:
-    #             store = profit
-    # return store
-    min_price = float('inf')
-    max_profit = 0
+# def bass(a1):
+#     # buy=a1[0]
+#     # store = 0
+#     # for i in a1:
+#     #     if i<buy:
+#     #         buy=i
+#     #     else:
+#     #         profit = i - buy
+#     #         if profit > store:
+#     #             store = profit
+#     # return store
+#     min_price = float('inf')
+#     max_profit = 0
 
-    for i in a1:
-        min_price = min(min_price, i)
-        max_profit = max(max_profit, i-min_price)
-    return max_profit
+#     for i in a1:
+#         min_price = min(min_price, i)
+#         max_profit = max(max_profit, i-min_price)
+#     return max_profit
     
 
-print(bass([7,1,5,3,6,4]))
+# print(bass([7,1,5,3,6,4]))
+
+#maximum subarray
+def maxSubArray(nums):
+    current_sum = nums[0]
+    max_sum = nums[0]
+
+    for i in range(1, len(nums)):
+        current_sum = max(nums[i], current_sum + nums[i])
+        max_sum = max(max_sum, current_sum)
+
+    return max_sum
+
+
+# test cases
+print(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))  # 6
+print(maxSubArray([1]))                      # 1
+print(maxSubArray([5,4,-1,7,8]))              # 23
+print(maxSubArray([-1,-2,-3,-4]))             # -1
