@@ -1,3 +1,4 @@
+
 # # Factorial using recursion
 # def fact(no):
 #     if no==0 or no==1: 
@@ -182,7 +183,6 @@
 
 # s = "Hello World, How are you? are you doing well? i can't believe it's been that long."
 # print(countWord(s))
-
 
 # def validate_number(s):
 #     if not s:
@@ -590,19 +590,38 @@
 # print(bass([7,1,5,3,6,4]))
 
 #maximum subarray
-def maxSubArray(nums):
-    current_sum = nums[0]
-    max_sum = nums[0]
+# def maxSubArray(nums):
+#     current_sum = nums[0]
+#     max_sum = nums[0]
 
-    for i in range(1, len(nums)):
-        current_sum = max(nums[i], current_sum + nums[i])
-        max_sum = max(max_sum, current_sum)
+#     for i in range(1, len(nums)):
+#         current_sum = max(nums[i], current_sum + nums[i])
+#         max_sum = max(max_sum, current_sum)
 
-    return max_sum
+#     return max_sum
 
 
-# test cases
-print(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))  # 6
-print(maxSubArray([1]))                      # 1
-print(maxSubArray([5,4,-1,7,8]))              # 23
-print(maxSubArray([-1,-2,-3,-4]))             # -1
+# # test cases
+# print(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))  # 6
+# print(maxSubArray([1]))                      # 1
+# print(maxSubArray([5,4,-1,7,8]))              # 23
+# print(maxSubArray([-1,-2,-3,-4]))             # -1
+
+n = 5
+sum = 0
+
+for i in range(1, n + 1):
+    res += i ** 3
+
+print(res)
+
+n = 11
+if n <= 1:
+    print(False)
+else:
+    is_prime = True  # Flag variable
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            is_prime = False
+            break
+    print(is_prime)
