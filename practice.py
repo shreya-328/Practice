@@ -628,35 +628,75 @@
 
 # function to check if a substring 
 # s[low..high] is a palindrome
-def checkPal(str, low, high):
-    while low < high:
-        if str[low] != str[high]:
-            return False
-        low += 1
-        high -= 1
-    return True
+# def checkPal(str, low, high):
+#     while low < high:
+#         if str[low] != str[high]:
+#             return False
+#         low += 1
+#         high -= 1
+#     return True
 
-# function to find the longest palindrome substring
-def getLongestPal(s):
+# # function to find the longest palindrome substring
+# def getLongestPal(s):
     
+#     n = len(s)
+
+#     # all substrings of length 1 are palindromes
+#     maxLen = 1
+#     start = 0
+
+#     # nested loop to mark start and end index
+#     for i in range(n):
+#         for j in range(i, n):
+
+#             # check if the current substring is 
+#             # a palindrome
+#             if checkPal(s, i, j) and (j - i + 1) > maxLen:
+#                 start = i
+#                 maxLen = j - i + 1
+
+#     return s[start:start + maxLen]
+
+# if __name__ == "__main__":
+#     s = "forgeeksskeegfor"
+#     print(getLongestPal(s))
+
+    #DP
+
+def getLongestPal(s):
     n = len(s)
-
-    # all substrings of length 1 are palindromes
-    maxLen = 1
+    dp = [[False] * n for _ in range(n)]
+    
+    # dp[i][j] if the substring from [i to j] is a palindrome or not
     start = 0
-
-    # nested loop to mark start and end index
+    maxLen = 1
+    
+    # all substrings of length 1 are palindromes
     for i in range(n):
-        for j in range(i, n):
-
-            # check if the current substring is 
-            # a palindrome
-            if checkPal(s, i, j) and (j - i + 1) > maxLen:
+        dp[i][i] = True
+    
+    # check for substrings of length 2
+    for i in range(n - 1):
+        if s[i] == s[i + 1]:
+            dp[i][i + 1] = True
+            if maxLen == 1:
                 start = i
-                maxLen = j - i + 1
-
+                maxLen = 2
+    
+    # check for substrings of length 3 and more
+    for length in range(3, n + 1):
+        for i in range(n - length + 1):
+            j = i + length - 1
+    
+            # if s[i] == s[j] then check for [i+1 .. j-1]
+            if s[i] == s[j] and dp[i + 1][j - 1]:
+                dp[i][j] = True
+                if length > maxLen:
+                    start = i
+                    maxLen = length
+    
     return s[start:start + maxLen]
-
+        
 if __name__ == "__main__":
     s = "forgeeksskeegfor"
     print(getLongestPal(s))
