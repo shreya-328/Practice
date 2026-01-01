@@ -607,21 +607,56 @@
 # print(maxSubArray([5,4,-1,7,8]))              # 23
 # print(maxSubArray([-1,-2,-3,-4]))             # -1
 
-n = 5
-sum = 0
+# n = 5
+# sum = 0
 
-for i in range(1, n + 1):
-    res += i ** 3
+# for i in range(1, n + 1):
+#     res += i ** 3
 
-print(res)
+# print(res)
 
-n = 11
-if n <= 1:
-    print(False)
-else:
-    is_prime = True  # Flag variable
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0:
-            is_prime = False
-            break
-    print(is_prime)
+# n = 11
+# if n <= 1:
+#     print(False)
+# else:
+#     is_prime = True  # Flag variable
+#     for i in range(2, int(n**0.5) + 1):
+#         if n % i == 0:
+#             is_prime = False
+#             break
+#     print(is_prime)
+
+# function to check if a substring 
+# s[low..high] is a palindrome
+def checkPal(str, low, high):
+    while low < high:
+        if str[low] != str[high]:
+            return False
+        low += 1
+        high -= 1
+    return True
+
+# function to find the longest palindrome substring
+def getLongestPal(s):
+    
+    n = len(s)
+
+    # all substrings of length 1 are palindromes
+    maxLen = 1
+    start = 0
+
+    # nested loop to mark start and end index
+    for i in range(n):
+        for j in range(i, n):
+
+            # check if the current substring is 
+            # a palindrome
+            if checkPal(s, i, j) and (j - i + 1) > maxLen:
+                start = i
+                maxLen = j - i + 1
+
+    return s[start:start + maxLen]
+
+if __name__ == "__main__":
+    s = "forgeeksskeegfor"
+    print(getLongestPal(s))
