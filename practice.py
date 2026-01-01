@@ -663,40 +663,76 @@
 
     #DP
 
-def getLongestPal(s):
-    n = len(s)
-    dp = [[False] * n for _ in range(n)]
+# def getLongestPal(s):
+#     n = len(s)
+#     dp = [[False] * n for _ in range(n)]
     
-    # dp[i][j] if the substring from [i to j] is a palindrome or not
-    start = 0
-    maxLen = 1
+#     # dp[i][j] if the substring from [i to j] is a palindrome or not
+#     start = 0
+#     maxLen = 1
     
-    # all substrings of length 1 are palindromes
-    for i in range(n):
-        dp[i][i] = True
+#     # all substrings of length 1 are palindromes
+#     for i in range(n):
+#         dp[i][i] = True
     
-    # check for substrings of length 2
-    for i in range(n - 1):
-        if s[i] == s[i + 1]:
-            dp[i][i + 1] = True
-            if maxLen == 1:
-                start = i
-                maxLen = 2
+#     # check for substrings of length 2
+#     for i in range(n - 1):
+#         if s[i] == s[i + 1]:
+#             dp[i][i + 1] = True
+#             if maxLen == 1:
+#                 start = i
+#                 maxLen = 2
     
-    # check for substrings of length 3 and more
-    for length in range(3, n + 1):
-        for i in range(n - length + 1):
-            j = i + length - 1
+#     # check for substrings of length 3 and more
+#     for length in range(3, n + 1):
+#         for i in range(n - length + 1):
+#             j = i + length - 1
     
-            # if s[i] == s[j] then check for [i+1 .. j-1]
-            if s[i] == s[j] and dp[i + 1][j - 1]:
-                dp[i][j] = True
-                if length > maxLen:
-                    start = i
-                    maxLen = length
+#             # if s[i] == s[j] then check for [i+1 .. j-1]
+#             if s[i] == s[j] and dp[i + 1][j - 1]:
+#                 dp[i][j] = True
+#                 if length > maxLen:
+#                     start = i
+#                     maxLen = length
     
-    return s[start:start + maxLen]
+#     return s[start:start + maxLen]
         
+# if __name__ == "__main__":
+#     s = "forgeeksskeegfor"
+#     print(getLongestPal(s))
+
+class Node:
+    def __init__(self, x):
+        self.data = x
+        self.next = None
+
+def detectLoop(head):
+    st = set()
+
+    while head is not None:
+
+        # if this node is already present
+        # in hashmap it means there is a cycle
+        if head in st:
+            return True
+
+        # if we are seeing the node for
+        # the first time, insert it in hash
+        st.add(head)
+
+        head = head.next
+
+    return False
+
 if __name__ == "__main__":
-    s = "forgeeksskeegfor"
-    print(getLongestPal(s))
+
+    head = Node(1)
+    head.next = Node(3)
+    head.next.next = Node(4)
+
+    head.next.next.next = head.next
+
+    if detectLoop(head):
+        print("true")
+    else:
+        print("false")
