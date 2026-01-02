@@ -720,11 +720,18 @@
 
 # print(fun(1,2))
 
-def fun(N,M):
-    arr=[]
-    counter=0
-    for i in range(N):
-        arr.append(i)
-    for i in range(M):
+# def fun(N,M):
+#     arr=[]
+#     counter=0
+#     for i in range(N):
+#         arr.append(i)
+#     for i in range(M):
+#         counter+=1
+#     print(counter)
+
+def function(N,M):
+  counter=0
+  for i in range(N):
+    for j in range(M):
         counter+=1
     print(counter)
