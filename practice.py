@@ -711,9 +711,20 @@
 # for i in range(M):
 #   b= b + random()
 
-def fun(n,m):
-    for i in range(n):
-        print(i)
-    for i in range(m):
-        print(i)
-print(fun(1,2))
+# def fun(n,m):
+#     for i in range(n):
+#         print(i)
+#     for i in range(m):
+#         print(i)
+
+
+# print(fun(1,2))
+
+def fun(N,M):
+    arr=[]
+    counter=0
+    for i in range(N):
+        arr.append(i)
+    for i in range(M):
+        counter+=1
+    print(counter)
