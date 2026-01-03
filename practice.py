@@ -809,16 +809,34 @@
 # print(swap(int(input()), int(input())))
 
 #6.) find closest to n divisible by m
-def closestn(n,m):
-    if m==0:
-        raise ValueError("Divisor can't be equal to 0")
-    lower = round(n/m)*m
-    upper = lower + m if n>=0 else lower - m
-    if abs(n-lower)<abs(n-upper):
-        return lower
-    elif abs(n-lower) > abs(n-upper):
-        return upper
-    else:
-        return lower if abs(lower)>abs(upper) else upper
+# def closestn(n,m):
+#     if m==0:
+#         raise ValueError("Divisor can't be equal to 0")
+#     lower = round(n/m)*m
+#     upper = lower + m if n>=0 else lower - m
+#     if abs(n-lower)<abs(n-upper):
+#         return lower
+#     elif abs(n-lower) > abs(n-upper):
+#         return upper
+#     else:
+#         return lower if abs(lower)>abs(upper) else upper
 
-print(closestn(int(input()), int(input())))
+# print(closestn(int(input()), int(input())))
+
+#7.) Dice Problem
+def oppositeFaceOfDice(n):
+    if n == 1:
+        return 6
+    elif n == 2:
+        return 5
+    elif n == 3:
+        return 4
+    elif n == 4:
+        return 3
+    elif n == 5:
+        return 2
+    else:
+        return 1
+
+n = int(input())
+print(oppositeFaceOfDice(n))
