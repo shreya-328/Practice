@@ -786,26 +786,39 @@
 #     return res
 # print(sqNat(int(input())))
 
-# 4.) Swap Two Numbers
-def swap(a,b):
-    # c=a
-    # a=b
-    # b=c
-    # return (a,b)
+# 5.) Swap Two Numbers
+# def swap(a,b):
+#     # c=a
+#     # a=b
+#     # b=c
+#     # return (a,b)
 
-    # a= (a*b)
-    # b= a//b
-    # a=a//b
+#     # a= (a*b)
+#     # b= a//b
+#     # a=a//b
 
-    # a = a+b
-    # b = a-b
-    # a=a-b
+#     # a = a+b
+#     # b = a-b
+#     # a=a-b
 
-    a= a ^ b
-    b= a^b
-    a=a^b
+#     a= a ^ b
+#     b= a^b
+#     a=a^b
 
-    return a,b
+#     return a,b
+# print(swap(int(input()), int(input())))
 
+#6.) find closest to n divisible by m
+def closestn(n,m):
+    if m==0:
+        raise ValueError("Divisor can't be equal to 0")
+    lower = round(n/m)*m
+    upper = lower + m if n>=0 else lower - m
+    if abs(n-lower)<abs(n-upper):
+        return lower
+    elif abs(n-lower) > abs(n-upper):
+        return upper
+    else:
+        return lower if abs(lower)>abs(upper) else upper
 
-print(swap(int(input()), int(input())))
+print(closestn(int(input()), int(input())))
