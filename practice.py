@@ -777,11 +777,35 @@
 # print(natural(int(input())))
 
 # 4.) Program for sum of square of first n natural number
-def sqNat(num):
-    if num==0:
-        return 0
-    res = 0
-    for i in range(1,num+1):
-        res = res + i*i
-    return res
-print(sqNat(int(input())))
+# def sqNat(num):
+#     if num==0:
+#         return 0
+#     res = 0
+#     for i in range(1,num+1):
+#         res = res + i*i
+#     return res
+# print(sqNat(int(input())))
+
+# 4.) Swap Two Numbers
+def swap(a,b):
+    # c=a
+    # a=b
+    # b=c
+    # return (a,b)
+
+    # a= (a*b)
+    # b= a//b
+    # a=a//b
+
+    # a = a+b
+    # b = a-b
+    # a=a-b
+
+    a= a ^ b
+    b= a^b
+    a=a^b
+
+    return a,b
+
+
+print(swap(int(input()), int(input())))
