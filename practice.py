@@ -729,17 +729,40 @@
 #         counter+=1
 #     print(counter)
 
-def function(N,M):
-  counter=0
-  for i in range(N):
-    for j in range(M):
-        counter+=1
-    print(counter)
+# def function(N,M):
+#   counter=0
+#   for i in range(N):
+#     for j in range(M):
+#         counter+=1
+#     print(counter)
 
-    def fun(n,m):
-    arr=[[0]*m for i in range(n)]
-    for i in range(n):
-        for j in range(m):
-            k=1
-            while k<n*m:
-                k*=2
+#     def fun(n,m):
+#     arr=[[0]*m for i in range(n)]
+#     for i in range(n):
+#         for j in range(m):
+#             k=1
+#             while k<n*m:
+#                 k*=2
+
+# LOGIC BUILDING PROBLEMS
+
+# 1. check even or odd
+# def evenOdd (num):
+#     if num==0:
+#         return True
+#     if num%2==0:
+#         return "It is even"
+#     else:
+#         return "It is odd"
+# print(evenOdd(int(input())))
+
+# 2.) Multiplication Table
+def multiTable(num):
+    if num==0:
+        return "Enter some other number"
+    for i in range(1,11):
+        print(num ,"*", i, "= ", num * i)
+
+multiTable(int(input()))
+
+
