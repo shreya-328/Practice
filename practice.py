@@ -766,14 +766,22 @@
 # multiTable(int(input()))
 
 # 3.) Program for sum of n natural number
-def natural(num):
-    if num == 0:
+# def natural(num):
+#     if num == 0:
+#         return 0
+#     res=0
+#     for i in range(1,num+1):
+#         res=res+i
+
+#     return res
+# print(natural(int(input())))
+
+# 4.) Program for sum of square of first n natural number
+def sqNat(num):
+    if num==0:
         return 0
-    res=0
+    res = 0
     for i in range(1,num+1):
-        res=res+i
-
+        res = res + i*i
     return res
-print(natural(int(input())))
-
-
+print(sqNat(int(input())))
