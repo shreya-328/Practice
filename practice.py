@@ -757,12 +757,23 @@
 # print(evenOdd(int(input())))
 
 # 2.) Multiplication Table
-def multiTable(num):
-    if num==0:
-        return "Enter some other number"
-    for i in range(1,11):
-        print(num ,"*", i, "= ", num * i)
+# def multiTable(num):
+#     if num==0:
+#         return "Enter some other number"
+#     for i in range(1,11):
+#         print(num ,"*", i, "= ", num * i)
 
-multiTable(int(input()))
+# multiTable(int(input()))
+
+# 3.) Program for sum of n natural number
+def natural(num):
+    if num == 0:
+        return 0
+    res=0
+    for i in range(1,num+1):
+        res=res+i
+
+    return res
+print(natural(int(input())))
 
 
