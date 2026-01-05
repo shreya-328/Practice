@@ -43,3 +43,22 @@
 -- )
 -- select count(*) from cte where total_users>=3
 
+-- INSERT INTO orders (order_id, user_id, order_date, order_status) VALUES
+-- (109, 1, '2024-02-05', 'completed'),
+-- (110, 1, '2024-02-18', 'completed'),
+-- (111, 3, '2024-02-10', 'completed'),
+-- (112, 5, '2024-02-02', 'completed');
+
+-- verifying
+-- SELECT * 
+-- FROM orders
+-- ORDER BY user_id, order_date;
+
+-- Q3. Count users who placed orders in both january and february
+with cte as (
+    select user_id, count(distinct Month(order_date)) as monthc
+    from orders
+    where month(order_date)in (1,2) 
+    group by user_id
+)
+select count(*) from cte where monthc=2
