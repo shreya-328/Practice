@@ -62,3 +62,13 @@ with cte as (
     group by user_id
 )
 select count(*) from cte where monthc=2
+
+SELECT COUNT(*)
+FROM (
+    SELECT user_id
+    FROM orders
+    GROUP BY user_id
+    HAVING 
+        SUM(CASE WHEN MONTH(order_date) = 1 THEN 1 ELSE 0 END) > 0
+    AND SUM(CASE WHEN MONTH(order_date) = 2 THEN 1 ELSE 0 END) > 0
+) t;
