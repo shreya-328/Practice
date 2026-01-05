@@ -1,0 +1,45 @@
+-- Create DATABASE DataAnalyticsPrep;
+-- Go
+
+-- USE DataAnalyticsPrep; 
+-- GO
+
+-- CREATE Table Orders(
+--     order_id int Primary key,
+--     user_id Int,
+--     order_date Date,
+--     order_status VARCHAR(20)
+-- )
+
+-- INSERT INTO orders (order_id, user_id, order_date, order_status) VALUES
+-- (101, 1, '2024-01-05', 'completed'),
+-- (102, 1, '2024-01-10', 'cancelled'),
+-- (103, 2, '2024-01-07', 'completed'),
+-- (104, 2, '2024-01-08', 'completed'),
+-- (105, 3, '2024-01-15', 'cancelled'),
+-- (106, 4, '2024-01-20', 'completed'),
+-- (107, 4, '2024-01-25', 'completed'),
+-- (108, 4, '2024-01-28', 'completed');
+
+-- select * from dbo.[Orders];
+
+-- count unique users who placed at least one order
+-- select count(distinct(user_id)) as total_users from orders;
+
+-- select count(user_id) from orders group by user_id having count(order_id)>=1
+
+-- select count(*) FROM(
+--     select user_id
+--     from orders group by user_id having count(*)>1
+-- )as t;
+-- )t; iska output is 3
+
+-- using CTE
+-- with cte as 
+-- (
+--     select user_id, count(*) as total_users 
+--     from Orders 
+--     group by user_id 
+-- )
+-- select count(*) from cte where total_users>=3
+
