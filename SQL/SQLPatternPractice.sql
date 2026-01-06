@@ -55,20 +55,36 @@
 -- ORDER BY user_id, order_date;
 
 -- Q3. Count users who placed orders in both january and february
-with cte as (
-    select user_id, count(distinct Month(order_date)) as monthc
-    from orders
-    where month(order_date)in (1,2) 
-    group by user_id
-)
-select count(*) from cte where monthc=2
+-- with cte as (
+--     select user_id, count(distinct Month(order_date)) as monthc
+--     from orders
+--     where month(order_date)in (1,2) 
+--     group by user_id
+-- )
+-- select count(*) from cte where monthc=2
 
-SELECT COUNT(*)
-FROM (
-    SELECT user_id
-    FROM orders
-    GROUP BY user_id
-    HAVING 
-        SUM(CASE WHEN MONTH(order_date) = 1 THEN 1 ELSE 0 END) > 0
-    AND SUM(CASE WHEN MONTH(order_date) = 2 THEN 1 ELSE 0 END) > 0
-) t;
+-- SELECT COUNT(*)
+-- FROM (
+--     SELECT user_id
+--     FROM orders
+--     GROUP BY user_id
+--     HAVING 
+--         SUM(CASE WHEN MONTH(order_date) = 1 THEN 1 ELSE 0 END) > 0
+--     AND SUM(CASE WHEN MONTH(order_date) = 2 THEN 1 ELSE 0 END) > 0
+-- ) t;
+
+-- use DataAnalyticsPrep;
+-- GO
+--Q4. Count Customer who has placed only one order ever
+-- select count(*) from(
+--     select user_id from Orders group by user_id having count(*)=1
+-- ) as t;
+
+--using CTE
+
+-- with cte as(
+--     select user_id, count(*) as totalo from orders group by user_id
+-- )
+-- select count(*) from cte where totalo=1
+
+-- Q.5. 
