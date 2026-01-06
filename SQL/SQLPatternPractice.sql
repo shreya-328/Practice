@@ -165,6 +165,16 @@
 -- (14,108, 6, 1),
 -- (15,108, 7, 1);   -- order 108 has 7 items
 
--- 
+-- Count sellers who sold at leasst one product
 
--- Q.5. 
+
+-- Q.5. Count sellers who sold atleast one product
+-- select count(*) from (
+--     select seller_id from Orders
+--     group by seller_id
+    
+-- ) as t;
+
+-- select seller_id from Orders
+--     group by seller_id
+
