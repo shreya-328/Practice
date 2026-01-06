@@ -187,8 +187,41 @@
 --     having sum(order_amount) > 50000
 -- --) as t;
 
-with cte as(
-    select user_id, sum(order_amount) as amount
-    from orders group by user_id
+-- with cte as(
+--     select user_id, sum(order_amount) as amount
+--     from orders group by user_id
+-- )
+-- select user_id from cte where amount>50000
+
+-- Q.7. count orders that contain more than 5 items 
+
+-- --select count(*) FROM(
+--     select order_id
+--     from Order_Items
+--     group by order_id 
+--     having count(*)>5
+-- --) as t;
+
+-- WITH order_item_count AS (
+--     SELECT 
+--         order_id,
+--         COUNT(*) AS total_items
+--     FROM dbo.Order_Items
+--     GROUP BY order_id
+-- )
+-- SELECT COUNT(*)
+-- FROM order_item_count
+-- WHERE total_items > 5;
+WITH first_order AS (
+    SELECT 
+        o.user_id,
+        MIN(o.order_date) AS first_order_date
+    FROM dbo.Orders o
+    GROUP BY o.user_id
 )
-select user_id from cte where amount>50000sssss
+SELECT COUNT(*)
+FROM first_order fo
+JOIN dbo.Users u
+  ON fo.user_id = u.user_id
+WHERE fo.first_order_date <= DATEADD(DAY, 7, u.signup_date);
+s
