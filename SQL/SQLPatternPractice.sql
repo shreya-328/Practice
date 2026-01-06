@@ -178,3 +178,17 @@
 -- select seller_id from Orders
 --     group by seller_id
 
+-- Q.6 Count customers whose total spend is > ₹50000
+--select count(*) from
+-- --(
+--     select user_id,sum(order_amount) as amount
+--     from orders 
+--     group by user_id 
+--     having sum(order_amount) > 50000
+-- --) as t;
+
+with cte as(
+    select user_id, sum(order_amount) as amount
+    from orders group by user_id
+)
+select user_id from cte where amount>50000sssss
