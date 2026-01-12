@@ -212,16 +212,15 @@
 -- SELECT COUNT(*)
 -- FROM order_item_count
 -- WHERE total_items > 5;
-WITH first_order AS (
-    SELECT 
-        o.user_id,
-        MIN(o.order_date) AS first_order_date
-    FROM dbo.Orders o
-    GROUP BY o.user_id
-)
-SELECT COUNT(*)
-FROM first_order fo
-JOIN dbo.Users u
-  ON fo.user_id = u.user_id
-WHERE fo.first_order_date <= DATEADD(DAY, 7, u.signup_date);
-s
+-- WITH first_order AS (
+--     SELECT 
+--         o.user_id,
+--         MIN(o.order_date) AS first_order_date
+--     FROM dbo.Orders o
+--     GROUP BY o.user_id
+-- )
+-- SELECT COUNT(*)
+-- FROM first_order fo
+-- JOIN dbo.Users u
+--   ON fo.user_id = u.user_id
+-- WHERE fo.first_order_date <= DATEADD(DAY, 7, u.signup_date);
