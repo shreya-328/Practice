@@ -824,19 +824,32 @@
 # print(closestn(int(input()), int(input())))
 
 #7.) Dice Problem
-def oppositeFaceOfDice(n):
-    if n == 1:
-        return 6
-    elif n == 2:
-        return 5
-    elif n == 3:
-        return 4
-    elif n == 4:
-        return 3
-    elif n == 5:
-        return 2
-    else:
-        return 1
+# def oppositeFaceOfDice(n):
+#     if n == 1:
+#         return 6
+#     elif n == 2:
+#         return 5
+#     elif n == 3:
+#         return 4
+#     elif n == 4:
+#         return 3
+#     elif n == 5:
+#         return 2
+#     else:
+#         return 1
 
-n = int(input())
-print(oppositeFaceOfDice(n))
+# n = int(input())
+# print(oppositeFaceOfDice(n))
+
+def nthTermOfAP(a1, a2, n):
+    nthTerm = a1
+    d = a2 - a1
+    for i in range(1, n):
+        nthTerm += d
+    return nthTerm
+
+
+a1 = 2
+a2 = 3
+n = 4
+print(nthTermOfAP(a1, a2, n))
