@@ -897,11 +897,21 @@
 # print("true") if isPrime(14) else print("false")
 
 #check if a number is a power of another number
-def checkPower(x,y):
-    if x==1:
-        return y==1
-    pow=1
-    while pow < y:
-        pow *= x
-    return pow==y
-print(checkPower(10,11))
+# def checkPower(x,y):
+#     if x==1:
+#         return y==1
+#     pow=1
+#     while pow < y:
+#         pow *= x
+#     return pow==y
+# print(checkPower(10,11))
+
+import math
+
+# Function to calculate distance
+def distance(x1 , y1 , x2 , y2):
+    return math.sqrt(math.pow(x2 - x1, 2) +
+                math.pow(y2 - y1, 2))
+
+# Drivers Code
+print("%.6f"%distance(3, 4, 4, 3))
