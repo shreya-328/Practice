@@ -224,3 +224,21 @@
 -- JOIN dbo.Users u
 --   ON fo.user_id = u.user_id
 -- WHERE fo.first_order_date <= DATEADD(DAY, 7, u.signup_date);
+
+-- count total orders that have items
+--select count(*) from orders o join order_items oi on o.order_id=oi.order_id;
+-- use DataAnalyticsPrep;
+-- go
+-- SELECT COUNT(distinct(o.order_id))
+-- FROM Orders o
+-- JOIN Order_Items oi
+--   ON o.order_id = oi.order_id;
+
+WITH order_level AS (
+    SELECT order_id, COUNT(*) AS items
+    FROM Order_Items
+    GROUP BY order_id
+)
+SELECT COUNT(*)
+FROM order_level;
+
