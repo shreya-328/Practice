@@ -854,13 +854,24 @@
 # n = 4
 # print(nthTermOfAP(a1, a2, n))
 
-def nthTermOfAP(a1, a2, n):
-    # using formula to find the
-    # Nth term t(n) = a(1) + (n-1)*d
-    return a1 + (n - 1) * (a2 - a1)
+# def nthTermOfAP(a1, a2, n):
+#     # using formula to find the
+#     # Nth term t(n) = a(1) + (n-1)*d
+#     return a1 + (n - 1) * (a2 - a1)
 
 
-a1 = 2
-a2 = 3
-n = 4
-print(nthTermOfAP(a1, a2, n))
+# a1 = 2
+# a2 = 3
+# n = 4
+# print(nthTermOfAP(a1, a2, n))
+
+## reverse digits of a number
+def rev(no):
+    res=0
+    while(no>0):
+        a=no%10
+        res=res*10+a
+        no=no//10
+    return res
+
+print(rev(4562))
