@@ -866,12 +866,42 @@
 # print(nthTermOfAP(a1, a2, n))
 
 ## reverse digits of a number
-def rev(no):
-    res=0
-    while(no>0):
-        a=no%10
-        res=res*10+a
-        no=no//10
-    return res
+# def rev(no):
+#     res=0
+#     while(no>0):
+#         a=no%10
+#         res=res*10+a
+#         no=no//10
+#     return res
 
-print(rev(4562))
+# print(rev(4562))
+
+#prime Testing
+
+# def isPrime(n):
+
+#     # Corner case
+#     if n <= 1:
+#         return False
+
+#     # Check from 2 to n-1
+#     for i in range(2, n):
+#         if n % i == 0:
+#             return False
+
+#     return True
+
+
+# # Driver Program to test above function
+# print("true") if isPrime(11) else print("false")
+# print("true") if isPrime(14) else print("false")
+
+#check if a number is a power of another number
+def checkPower(x,y):
+    if x==1:
+        return y==1
+    pow=1
+    while pow < y:
+        pow *= x
+    return pow==y
+print(checkPower(10,11))
