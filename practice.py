@@ -969,16 +969,28 @@
 #         print("Rectangles Don't Overlap")
 
 #factorial
-def factorial(n):
-    ans = 1
-    i = 2
-    #calculating the factorial
-    while (i <= n):
-        ans *= i
-        i += 1
-    return ans
+# def factorial(n):
+#     ans = 1
+#     i = 2
+#     #calculating the factorial
+#     while (i <= n):
+#         ans *= i
+#         i += 1
+#     return ans
 
-if __name__ == "__main__":
-    num = 5
-    print(factorial(num))
-    
+# if __name__ == "__main__":
+#     num = 5
+#     print(factorial(num))
+
+
+#pair cube count
+def count_pairs(n):
+    count = 0
+    for a in range(1, n + 1):
+        for b in range(n + 1):
+            if a**3 + b**3 == n:
+                count += 1
+    return count
+
+n = 9
+print(count_pairs(n))
