@@ -915,3 +915,26 @@ def distance(x1 , y1 , x2 , y2):
 
 # Drivers Code
 print("%.6f"%distance(3, 4, 4, 3))
+
+# Python3 program to check if three
+# sides form a  triangle or not 
+
+# function to check if three sides 
+# form a triangle or not 
+def checkValidity(a, b, c): 
+    
+    # check condition 
+    if (a + b <= c) or (a + c <= b) or (b + c <= a) :
+        return False
+    else:
+        return True        
+
+# driver code 
+a = 7
+b = 10
+c = 5
+if checkValidity(a, b, c):
+    print("Valid") 
+else:
+    print("Invalid")
+    
