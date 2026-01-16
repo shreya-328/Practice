@@ -906,64 +906,79 @@
 #     return pow==y
 # print(checkPower(10,11))
 
-import math
+# import math
 
-# Function to calculate distance
-def distance(x1 , y1 , x2 , y2):
-    return math.sqrt(math.pow(x2 - x1, 2) +
-                math.pow(y2 - y1, 2))
+# # Function to calculate distance
+# def distance(x1 , y1 , x2 , y2):
+#     return math.sqrt(math.pow(x2 - x1, 2) +
+#                 math.pow(y2 - y1, 2))
 
-# Drivers Code
-print("%.6f"%distance(3, 4, 4, 3))
+# # Drivers Code
+# print("%.6f"%distance(3, 4, 4, 3))
 
-# Python3 program to check if three
-# sides form a  triangle or not 
+# # Python3 program to check if three
+# # sides form a  triangle or not 
 
-# function to check if three sides 
-# form a triangle or not 
-def checkValidity(a, b, c): 
+# # function to check if three sides 
+# # form a triangle or not 
+# def checkValidity(a, b, c): 
     
-    # check condition 
-    if (a + b <= c) or (a + c <= b) or (b + c <= a) :
-        return False
-    else:
-        return True        
+#     # check condition 
+#     if (a + b <= c) or (a + c <= b) or (b + c <= a) :
+#         return False
+#     else:
+#         return True        
 
-# driver code 
-a = 7
-b = 10
-c = 5
-if checkValidity(a, b, c):
-    print("Valid") 
-else:
-    print("Invalid")
+# # driver code 
+# a = 7
+# b = 10
+# c = 5
+# if checkValidity(a, b, c):
+#     print("Valid") 
+# else:
+#     print("Invalid")
 
 
-# overlapping rectangle
-class Point:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+# # overlapping rectangle
+# class Point:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
 
-def do_overlap(l1, r1, l2, r2):
-    # If one rectangle is to the left of the other
-    if l1.x > r2.x or l2.x > r1.x:
-        return False
+# def do_overlap(l1, r1, l2, r2):
+#     # If one rectangle is to the left of the other
+#     if l1.x > r2.x or l2.x > r1.x:
+#         return False
 
-    # If one rectangle is above the other
-    if r1.y > l2.y or r2.y > l1.y:
-        return False
+#     # If one rectangle is above the other
+#     if r1.y > l2.y or r2.y > l1.y:
+#         return False
 
-    return True
+#     return True
 
-# Driver code
+# # Driver code
+# if __name__ == "__main__":
+#     l1 = Point(0, 10)
+#     r1 = Point(10, 0)
+#     l2 = Point(5, 5)
+#     r2 = Point(15, 0)
+
+#     if do_overlap(l1, r1, l2, r2):
+#         print("Rectangles Overlap")
+#     else:
+#         print("Rectangles Don't Overlap")
+
+#factorial
+def factorial(n):
+    ans = 1
+    i = 2
+    #calculating the factorial
+    while (i <= n):
+        ans *= i
+        i += 1
+    return ans
+
 if __name__ == "__main__":
-    l1 = Point(0, 10)
-    r1 = Point(10, 0)
-    l2 = Point(5, 5)
-    r2 = Point(15, 0)
-
-    if do_overlap(l1, r1, l2, r2):
-        print("Rectangles Overlap")
-    else:
-        print("Rectangles Don't Overlap")
+    num = 5
+    print(factorial(num))
+    
