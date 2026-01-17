@@ -243,20 +243,32 @@
 -- FROM order_level;
 
 -- count total revenue per user
-SELECT user_id, SUM(order_amount)
-FROM Orders
-GROUP BY user_id;
+-- SELECT user_id, SUM(order_amount)
+-- FROM Orders
+-- GROUP BY user_id;
 
-WITH order_level AS (
+-- WITH order_level AS (
+--     SELECT 
+--         order_id,
+--         user_id,
+--         order_amount
+--     FROM dbo.Orders
+-- )
+-- SELECT 
+--     user_id,
+--     SUM(order_amount) AS total_revenue
+-- FROM order_level
+-- GROUP BY user_id;
+
+-- count users who bought more than 3 distinct product
+SELECT COUNT(*)
+FROM (
     SELECT 
-        order_id,
-        user_id,
-        order_amount
-    FROM dbo.Orders
-)
-SELECT 
-    user_id,
-    SUM(order_amount) AS total_revenue
-FROM order_level
-GROUP BY user_id;
-
+        o.user_id
+    FROM dbo.Orders o
+    JOIN dbo.Order_Items oi
+      ON o.order_id = oi.order_id
+    GROUP BY o.user_id
+    HAVING COUNT(DISTINCT oi.product_id) > 3
+) t;
+--id dekhna ho toh
