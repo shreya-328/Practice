@@ -234,11 +234,29 @@
 -- JOIN Order_Items oi
 --   ON o.order_id = oi.order_id;
 
+-- WITH order_level AS (
+--     SELECT order_id, COUNT(*) AS items
+--     FROM Order_Items
+--     GROUP BY order_id
+-- )
+-- SELECT COUNT(*)
+-- FROM order_level;
+
+-- count total revenue per user
+SELECT user_id, SUM(order_amount)
+FROM Orders
+GROUP BY user_id;
+
 WITH order_level AS (
-    SELECT order_id, COUNT(*) AS items
-    FROM Order_Items
-    GROUP BY order_id
+    SELECT 
+        order_id,
+        user_id,
+        order_amount
+    FROM dbo.Orders
 )
-SELECT COUNT(*)
-FROM order_level;
+SELECT 
+    user_id,
+    SUM(order_amount) AS total_revenue
+FROM order_level
+GROUP BY user_id;
 
