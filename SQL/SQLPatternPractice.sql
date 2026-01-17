@@ -272,3 +272,10 @@ FROM (
     HAVING COUNT(DISTINCT oi.product_id) > 3
 ) t;
 --id dekhna ho toh
+SELECT 
+    o.user_id,
+    COUNT(DISTINCT oi.product_id) AS distinct_products
+FROM dbo.Orders o
+JOIN dbo.Order_Items oi
+  ON o.order_id = oi.order_id
+GROUP BY o.user_id;
