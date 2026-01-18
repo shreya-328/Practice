@@ -335,8 +335,20 @@
 
 
 --Revenue by city
-select u.city,
-sum(o.order_amount)
-from users u join orders o
-on u.user_id = o.user_id
-group by u.city
+-- select u.city,
+-- sum(o.order_amount)
+-- from users u join orders o
+-- on u.user_id = o.user_id
+-- group by u.city
+
+-- 7. Count users who purchased from more than one seller.
+-- select count(*) from (
+-- SELECT user_id
+-- FROM dbo.Orders
+-- GROUP BY user_id
+-- HAVING COUNT(DISTINCT seller_id) > 1)as t;
+
+
+select o.user_id from orders o
+join sellers s on o.seller_id = s.seller_id
+group by o.user_id having count(distinct s.seller_id)>1;
