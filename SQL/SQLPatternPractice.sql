@@ -243,6 +243,7 @@
 -- FROM order_level;
 
 -- count total revenue per user
+
 -- SELECT user_id, SUM(order_amount)
 -- FROM Orders
 -- GROUP BY user_id;
@@ -261,21 +262,33 @@
 -- GROUP BY user_id;
 
 -- count users who bought more than 3 distinct product
-SELECT COUNT(*)
-FROM (
-    SELECT 
-        o.user_id
-    FROM dbo.Orders o
-    JOIN dbo.Order_Items oi
-      ON o.order_id = oi.order_id
-    GROUP BY o.user_id
-    HAVING COUNT(DISTINCT oi.product_id) > 3
-) t;
+-- SELECT COUNT(*)
+-- FROM (
+--     SELECT 
+--         o.user_id
+--     FROM dbo.Orders o
+--     JOIN dbo.Order_Items oi
+--       ON o.order_id = oi.order_id
+--     GROUP BY o.user_id
+--     HAVING COUNT(DISTINCT oi.product_id) > 3
+-- ) t;
 --id dekhna ho toh
-SELECT 
-    o.user_id,
-    COUNT(DISTINCT oi.product_id) AS distinct_products
-FROM dbo.Orders o
-JOIN dbo.Order_Items oi
-  ON o.order_id = oi.order_id
-GROUP BY o.user_id;
+-- SELECT 
+--     o.user_id,
+--     COUNT(DISTINCT oi.product_id) AS distinct_products
+-- FROM dbo.Orders o
+-- JOIN dbo.Order_Items oi
+--   ON o.order_id = oi.order_id
+-- GROUP BY o.user_id;
+
+-- AOV - Average Order value
+--select avg(order_amount) from orders;
+
+-- WITH order_level AS (
+--     SELECT DISTINCT
+--         o.order_id,
+--         o.order_amount
+--     FROM dbo.Orders o
+-- )
+-- SELECT AVG(order_amount) AS avg_order_value
+-- FROM order_level;
