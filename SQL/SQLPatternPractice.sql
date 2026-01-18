@@ -365,3 +365,11 @@
 
 
 -- add number of orders per month with item_level discount applied
+with dp as (
+  select distinct order_id from order_items where discount_amount > 0
+)
+select FORMAT(o.order_date, 'yyyy-MM') as order_month,
+count(*) as order_count from dp d join orders o
+on d.order_id = o.order_id
+group by format (o.order_date, 'yyyy-MM')
+order by order_month
