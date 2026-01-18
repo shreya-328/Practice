@@ -311,12 +311,32 @@
 -- count orders that include products from multiple categories
 -- SELECT COUNT(*)
 -- FROM (
-    SELECT 
-        oi.order_id
-    FROM dbo.Order_Items oi
-    JOIN dbo.Products p
-      ON oi.product_id = p.product_id
-    GROUP BY oi.order_id
-    HAVING COUNT(DISTINCT p.category) > 1
--- ) t;
+--     SELECT 
+--         oi.order_id
+--     FROM dbo.Order_Items oi
+--     JOIN dbo.Products p
+--       ON oi.product_id = p.product_id
+--     GROUP BY oi.order_id
+--     HAVING COUNT(DISTINCT p.category) > 1
+-- -- ) t;
 
+-- ALTER TABLE dbo.Users
+-- ADD city VARCHAR(50);
+-- GO
+UPDATE dbo.Users
+SET city = CASE user_id
+    WHEN 1 THEN 'Delhi'
+    WHEN 2 THEN 'Mumbai'
+    WHEN 3 THEN 'Delhi'
+    WHEN 4 THEN 'Bangalore'
+    WHEN 5 THEN 'Pune'
+END;
+GO
+
+
+-- Revenue by city
+-- select u.city,
+-- sum(o.order_amount)
+-- from users u join orders o
+-- on u.user_id = o.user_id
+-- group by u.city
