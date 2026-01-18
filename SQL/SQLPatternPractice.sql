@@ -292,3 +292,31 @@
 -- )
 -- SELECT AVG(order_amount) AS avg_order_value
 -- FROM order_level;
+
+-- CREATE TABLE dbo.Products (
+--     product_id INT PRIMARY KEY,
+--     category VARCHAR(50)
+-- );
+
+-- INSERT INTO dbo.Products VALUES
+-- (1, 'Electronics'),
+-- (2, 'Electronics'),
+-- (3, 'Clothing'),
+-- (4, 'Clothing'),
+-- (5, 'Home'),
+-- (6, 'Home'),
+-- (7, 'Sports');
+
+
+-- count orders that include products from multiple categories
+-- SELECT COUNT(*)
+-- FROM (
+    SELECT 
+        oi.order_id
+    FROM dbo.Order_Items oi
+    JOIN dbo.Products p
+      ON oi.product_id = p.product_id
+    GROUP BY oi.order_id
+    HAVING COUNT(DISTINCT p.category) > 1
+-- ) t;
+
