@@ -349,6 +349,19 @@
 -- HAVING COUNT(DISTINCT seller_id) > 1)as t;
 
 
-select o.user_id from orders o
-join sellers s on o.seller_id = s.seller_id
-group by o.user_id having count(distinct s.seller_id)>1;
+-- select o.user_id from orders o
+-- join sellers s on o.seller_id = s.seller_id
+-- group by o.user_id having count(distinct s.seller_id)>1;
+
+-- ALTER TABLE dbo.Order_Items
+-- ADD discount_amount INT;
+-- GO
+-- UPDATE dbo.Order_Items
+-- SET discount_amount = CASE
+--     WHEN order_id IN (106, 108) THEN 100
+--     ELSE 0
+-- END;
+-- GO
+
+
+-- add number of orders per month with item_level discount applied
