@@ -381,11 +381,19 @@
 
 -- 1. users who never placed any oreders
 
-INSERT INTO dbo.Users (user_id, signup_date, city)
-VALUES (6, '2024-02-01', 'Jaipur');
+-- INSERT INTO dbo.Users (user_id, signup_date, city)
+-- VALUES (6, '2024-02-01', 'Jaipur');
 
-select u.user_id from users u left join orders o
-on u.user_id = o.user_id where o.user_id is null;
+-- select u.user_id from users u left join orders o
+-- on u.user_id = o.user_id where o.user_id is null;
 
-select u.user_id from users u left join orders o
-on u.user_id = o.user_id order by u.user_id
+-- select u.user_id from users u left join orders o
+-- on u.user_id = o.user_id order by u.user_id
+
+-- q2. cust who never returned after first order
+-- select u.user_id from users u left join 
+-- orders o on u.user_id = o.user_id
+-- group by u.user_id having count(o.user_id)=1
+
+-- select  user_id from Orders group by user_id 
+-- having count(user_id)=1
