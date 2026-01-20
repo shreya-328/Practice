@@ -364,12 +364,28 @@
 -- GO
 
 
--- add number of orders per month with item_level discount applied
-with dp as (
-  select distinct order_id from order_items where discount_amount > 0
-)
-select FORMAT(o.order_date, 'yyyy-MM') as order_month,
-count(*) as order_count from dp d join orders o
-on d.order_id = o.order_id
-group by format (o.order_date, 'yyyy-MM')
-order by order_month
+-- -- add number of orders per month with item_level discount applied
+-- with dp as (
+--   select distinct order_id from order_items where discount_amount > 0
+-- )
+-- select FORMAT(o.order_date, 'yyyy-MM') as order_month,
+-- count(*) as order_count from dp d join orders o
+-- on d.order_id = o.order_id
+-- group by format (o.order_date, 'yyyy-MM')
+-- order by order_month
+
+-- use DataAnalyticsPrep;
+-- GO
+
+-- PATTERN 3 - ANTI JOIN (WHO NEVER DID X)
+
+-- 1. users who never placed any oreders
+
+INSERT INTO dbo.Users (user_id, signup_date, city)
+VALUES (6, '2024-02-01', 'Jaipur');
+
+select u.user_id from users u left join orders o
+on u.user_id = o.user_id where o.user_id is null;
+
+select u.user_id from users u left join orders o
+on u.user_id = o.user_id order by u.user_id
