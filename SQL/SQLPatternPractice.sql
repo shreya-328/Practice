@@ -404,69 +404,91 @@
 -- catgory varchar(20);
 -- go
 
-INSERT INTO dbo.Products (product_id, prod_name, category) VALUES
-(1, 'Mobile', 'Electronics'),
-(2, 'Laptop', 'Electronics'),
-(3, 'T-Shirt', 'Clothing'),
-(4, 'Jeans', 'Clothing'),
-(5, 'Mixer', 'Home'),
-(6, 'Shoes', 'Footwear'),
-(7, 'Football', 'Sports');
-GO
+-- INSERT INTO dbo.Products (product_id, prod_name, category) VALUES
+-- (1, 'Mobile', 'Electronics'),
+-- (2, 'Laptop', 'Electronics'),
+-- (3, 'T-Shirt', 'Clothing'),
+-- (4, 'Jeans', 'Clothing'),
+-- (5, 'Mixer', 'Home'),
+-- (6, 'Shoes', 'Footwear'),
+-- (7, 'Football', 'Sports');
+-- GO
 
-INSERT INTO dbo.Products (product_id, prod_name, category) VALUES
-(8, 'Mobile', 'Electronics'),
-(9, 'Laptop', 'Electronics'),
-(10, 'T-Shirt', 'Clothing'),
-(11, 'Jeans', 'Clothing'),
-(12, 'Mixer', 'Home'),
-(13, 'Shoes', 'Footwear'),
-(14, 'Football', 'Sports');
-GO
+-- INSERT INTO dbo.Products (product_id, prod_name, category) VALUES
+-- (8, 'Mobile', 'Electronics'),
+-- (9, 'Laptop', 'Electronics'),
+-- (10, 'T-Shirt', 'Clothing'),
+-- (11, 'Jeans', 'Clothing'),
+-- (12, 'Mixer', 'Home'),
+-- (13, 'Shoes', 'Footwear'),
+-- (14, 'Football', 'Sports');
+-- GO
 
-DELETE FROM dbo.Products;
+-- DELETE FROM dbo.Products;
 
-ALTER TABLE dbo.Products
-ADD order_id INT NULL;
-GO
+-- ALTER TABLE dbo.Products
+-- ADD order_id INT NULL;
+-- GO
 
-UPDATE dbo.Products
-SET order_id = CASE product_id
-    WHEN 1 THEN 101
-    WHEN 2 THEN 102
-    WHEN 3 THEN 103
-    WHEN 4 THEN NULL
-    WHEN 5 THEN NULL
-    WHEN 6 THEN 104
-    WHEN 7 THEN NULL
-END;
-GO
+-- UPDATE dbo.Products
+-- SET order_id = CASE product_id
+--     WHEN 1 THEN 101
+--     WHEN 2 THEN 102
+--     WHEN 3 THEN 103
+--     WHEN 4 THEN NULL
+--     WHEN 5 THEN NULL
+--     WHEN 6 THEN 104
+--     WHEN 7 THEN NULL
+-- END;
+-- GO
 
-ALTER TABLE dbo.Orders
-ADD product_id INT NULL;
-GO
-UPDATE dbo.Orders
-SET product_id = CASE order_id
-    WHEN 101 THEN 1
-    WHEN 102 THEN 2
-    WHEN 103 THEN 3
-    WHEN 104 THEN 4
-    WHEN 105 THEN 5
-    WHEN 106 THEN 6
-    WHEN 107 THEN 7
-    WHEN 108 THEN 1
-    WHEN 109 THEN 2
-    WHEN 110 THEN 3
-    WHEN 111 THEN 4
-    WHEN 112 THEN 5
-END;
-GO
-
-
-
-select p.product_id from Products p
-left join Order_items o on p.product_id=  o.product_id 
-where o.product_id is null;
+-- ALTER TABLE dbo.Orders
+-- ADD product_id INT NULL;
+-- GO
+-- UPDATE dbo.Orders
+-- SET product_id = CASE order_id
+--     WHEN 101 THEN 1
+--     WHEN 102 THEN 2
+--     WHEN 103 THEN 3
+--     WHEN 104 THEN 4
+--     WHEN 105 THEN 5
+--     WHEN 106 THEN 6
+--     WHEN 107 THEN 7
+--     WHEN 108 THEN 1
+--     WHEN 109 THEN 2
+--     WHEN 110 THEN 3
+--     WHEN 111 THEN 4
+--     WHEN 112 THEN 5
+-- END;
+-- GO
 
 
-select * from orders;
+
+-- select p.product_id from Products p
+-- left join Order_items o on p.product_id=  o.product_id 
+-- where o.product_id is null;
+
+
+-- select * from orders;
+
+-- q4. users who signed up but never logged in
+
+-- CREATE TABLE dbo.Logins (
+--     login_id INT IDENTITY(1,1) PRIMARY KEY,
+--     user_id INT,
+--     login_date DATE
+-- );
+-- GO
+
+-- INSERT INTO dbo.Logins(user_id, login_date) VALUES
+-- (1, '2024-01-06'),
+-- (1, '2024-01-10'),
+-- (2, '2024-01-08'),
+-- (4, '2024-01-21'),
+-- (4, '2024-02-01');
+-- GO
+
+-- select u.user_id from users u
+-- left join logins l
+-- on u.user_id = l.user_id
+-- where l.user_id is null
