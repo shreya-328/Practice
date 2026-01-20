@@ -397,3 +397,76 @@
 
 -- select  user_id from Orders group by user_id 
 -- having count(user_id)=1
+
+-- q3. products that were never sold.
+
+-- Alter table products add prod_name varchar(20),
+-- catgory varchar(20);
+-- go
+
+INSERT INTO dbo.Products (product_id, prod_name, category) VALUES
+(1, 'Mobile', 'Electronics'),
+(2, 'Laptop', 'Electronics'),
+(3, 'T-Shirt', 'Clothing'),
+(4, 'Jeans', 'Clothing'),
+(5, 'Mixer', 'Home'),
+(6, 'Shoes', 'Footwear'),
+(7, 'Football', 'Sports');
+GO
+
+INSERT INTO dbo.Products (product_id, prod_name, category) VALUES
+(8, 'Mobile', 'Electronics'),
+(9, 'Laptop', 'Electronics'),
+(10, 'T-Shirt', 'Clothing'),
+(11, 'Jeans', 'Clothing'),
+(12, 'Mixer', 'Home'),
+(13, 'Shoes', 'Footwear'),
+(14, 'Football', 'Sports');
+GO
+
+DELETE FROM dbo.Products;
+
+ALTER TABLE dbo.Products
+ADD order_id INT NULL;
+GO
+
+UPDATE dbo.Products
+SET order_id = CASE product_id
+    WHEN 1 THEN 101
+    WHEN 2 THEN 102
+    WHEN 3 THEN 103
+    WHEN 4 THEN NULL
+    WHEN 5 THEN NULL
+    WHEN 6 THEN 104
+    WHEN 7 THEN NULL
+END;
+GO
+
+ALTER TABLE dbo.Orders
+ADD product_id INT NULL;
+GO
+UPDATE dbo.Orders
+SET product_id = CASE order_id
+    WHEN 101 THEN 1
+    WHEN 102 THEN 2
+    WHEN 103 THEN 3
+    WHEN 104 THEN 4
+    WHEN 105 THEN 5
+    WHEN 106 THEN 6
+    WHEN 107 THEN 7
+    WHEN 108 THEN 1
+    WHEN 109 THEN 2
+    WHEN 110 THEN 3
+    WHEN 111 THEN 4
+    WHEN 112 THEN 5
+END;
+GO
+
+
+
+select p.product_id from Products p
+left join Order_items o on p.product_id=  o.product_id 
+where o.product_id is null;
+
+
+select * from orders;
