@@ -533,5 +533,7 @@
 --  AND p.category = 'Electronics'
 -- WHERE p.product_id IS NULL;
 
-
+-- q7 orders that were created but never shipped
+-- select order_id from orders where order_status <> 'shipped'
+-- or order_status is null
 
