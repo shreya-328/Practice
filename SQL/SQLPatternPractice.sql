@@ -494,7 +494,44 @@
 -- where l.user_id is null
 
 -- q5 
-select s.seller_id from sellers s 
-left join orders o 
-on s.seller_id = o.seller_id
-where o.seller_id is null
+-- select s.seller_id from sellers s 
+-- left join orders o 
+-- on s.seller_id = o.seller_id
+-- where o.seller_id is null
+
+--q6  cust who never purchased existing category
+-- SELECT user_id
+-- FROM dbo.Orders o
+-- JOIN dbo.Order_Items oi
+--   ON o.order_id = oi.order_id
+-- JOIN dbo.Products p
+--   ON oi.product_id = p.product_id
+-- GROUP BY user_id
+-- HAVING SUM(CASE WHEN p.category = 'Electronics' THEN 1 ELSE 0 END) = 0;
+
+-- SELECT u.user_id
+-- FROM dbo.Users u
+-- WHERE NOT EXISTS (
+--     SELECT 1
+--     FROM dbo.Orders o
+--     JOIN dbo.Order_Items oi
+--       ON o.order_id = oi.order_id
+--     JOIN dbo.Products p
+--       ON oi.product_id = p.product_id
+--     WHERE o.user_id = u.user_id
+--       AND p.category = 'Electronics'
+-- );
+
+-- SELECT u.user_id
+-- FROM dbo.Users u
+-- LEFT JOIN dbo.Orders o
+--   ON u.user_id = o.user_id
+-- LEFT JOIN dbo.Order_Items oi
+--   ON o.order_id = oi.order_id
+-- LEFT JOIN dbo.Products p
+--   ON oi.product_id = p.product_id
+--  AND p.category = 'Electronics'
+-- WHERE p.product_id IS NULL;
+
+
+
