@@ -492,3 +492,9 @@
 -- left join logins l
 -- on u.user_id = l.user_id
 -- where l.user_id is null
+
+-- q5 
+select s.seller_id from sellers s 
+left join orders o 
+on s.seller_id = o.seller_id
+where o.seller_id is null
