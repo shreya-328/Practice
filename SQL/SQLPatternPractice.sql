@@ -556,11 +556,23 @@
 --  where rnk =1
 
 -- q2. find the latest status of each order
-select order_id, order_status from(
-    select order_id, order_status,
-    ROW_NUMBER() over(
-        PARTITION BY order_id
-        ORDER BY order_status DESC 
+-- select order_id, order_status from(
+--     select order_id, order_status,
+--     ROW_NUMBER() over(
+--         PARTITION BY order_id
+--         ORDER BY order_status DESC 
+--     )as rnk
+--     from orders
+-- )T where rnk = 1;
+
+-- q3. latest login per user
+select user_id, login_date 
+from(
+    select  
+    user_id, login_date,
+    ROW_NUMBER() OVER(
+        PARTITION BY user_id
+        ORDER BY login_date DESC
     )as rnk
-    from orders
-)T where rnk = 1;
+    from logins
+)T where rnk = 1
