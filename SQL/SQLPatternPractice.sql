@@ -737,26 +737,26 @@
 -- use DataAnalyticsPrep;
 -- GO
 
-select 
-category,
-product_id,
-total_revenue
-from (
-select p.category,
-oi.product_id, 
-sum(o.order_amount) as total_revenue , 
-ROW_NUMBER() over(
-    PARTITION BY p.category
-    order BY sum(o.order_amount) desc
-)as rnk
-from Orders o 
-join order_items oi  
-on o.order_id = oi.order_id
-join products p 
-on oi.product_id = p.product_id
-group by p.category, oi.product_id
-)t 
-where rnk<=2;
+-- select 
+-- category,
+-- product_id,
+-- total_revenue
+-- from (
+-- select p.category,
+-- oi.product_id, 
+-- sum(o.order_amount) as total_revenue , 
+-- ROW_NUMBER() over(
+--     PARTITION BY p.category
+--     order BY sum(o.order_amount) desc
+-- )as rnk
+-- from Orders o 
+-- join order_items oi  
+-- on o.order_id = oi.order_id
+-- join products p 
+-- on oi.product_id = p.product_id
+-- group by p.category, oi.product_id
+-- )t 
+-- where rnk<=2;
 
 -- SELECT 
 --     o.order_id,
@@ -784,4 +784,96 @@ where rnk<=2;
 
 -- ALTER TABLE Products
 -- DROP COLUMN catgory;
+
+-- q3 month over motnh revenue
+
+-- select order_month,
+-- LAG(monthly_revenue) OVER(
+--     order by order_month 
+-- ) as prev_month_revenue,
+-- monthly_revenue - LAG(monthly_revenue) over 
+-- (Order by order_month) as MOMChange
+-- from(
+-- select
+-- FORMAT(order_date, 'yyyy-MM') as order_month,
+-- sum (order_amount) as monthly_revenue
+-- from orders 
+-- group by FORMAT(order_date, 'yyyy-MM')
+-- )t
+
+-- SELECT
+--     order_month,
+--     monthly_revenue,
+--     LAG(monthly_revenue) OVER (ORDER BY order_month) AS prev_month_revenue,
+--     (
+--         (monthly_revenue 
+--          - LAG(monthly_revenue) OVER (ORDER BY order_month))
+--         * 100.0
+--         / LAG(monthly_revenue) OVER (ORDER BY order_month)
+--     ) AS mom_growth_percentage
+-- FROM (
+--     SELECT
+--         FORMAT(order_date, 'yyyy-MM') AS order_month,
+--         SUM(order_amount) AS monthly_revenue
+--     FROM dbo.Orders
+--     GROUP BY FORMAT(order_date, 'yyyy-MM')
+-- ) t
+-- ORDER BY order_month;
+
+
+
+-- SELECT
+--     user_id,
+--     total_spend,
+--     RANK() OVER (ORDER BY total_spend DESC) AS spend_rank
+-- FROM (
+--     SELECT
+--         user_id,
+--         SUM(order_amount) AS total_spend
+--     FROM dbo.Orders
+--     GROUP BY user_id
+-- ) t;
+
+
+-- SELECT DISTINCT user_id
+-- FROM (
+--     SELECT
+--         user_id,
+--         order_month,
+--         monthly_spend,
+--         LAG(monthly_spend, 1) OVER (
+--             PARTITION BY user_id
+--             ORDER BY order_month
+--         ) AS prev_month_spend,
+--         LAG(monthly_spend, 2) OVER (
+--             PARTITION BY user_id
+--             ORDER BY order_month
+--         ) AS prev_2_month_spend
+--     FROM (
+--         SELECT
+--             user_id,
+--             FORMAT(order_date, 'yyyy-MM') AS order_month,
+--             SUM(order_amount) AS monthly_spend
+--         FROM dbo.Orders
+--         GROUP BY user_id, FORMAT(order_date, 'yyyy-MM')
+--     ) m
+-- ) t
+-- WHERE monthly_spend > prev_month_spend
+--   AND prev_month_spend > prev_2_month_spend;
+
+
+-- SELECT
+--     order_date,
+--     daily_revenue,
+--     LAG(daily_revenue) OVER (ORDER BY order_date) AS prev_day_revenue,
+--     daily_revenue
+--       - LAG(daily_revenue) OVER (ORDER BY order_date) AS day_change
+-- FROM (
+--     SELECT
+--         CAST(order_date AS DATE) AS order_date,
+--         SUM(order_amount) AS daily_revenue
+--     FROM dbo.Orders
+--     GROUP BY CAST(order_date AS DATE)
+-- ) t
+-- ORDER BY order_date;
 
