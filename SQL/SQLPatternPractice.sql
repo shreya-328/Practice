@@ -537,3 +537,20 @@
 -- select order_id from orders where order_status <> 'shipped'
 -- or order_status is null
 
+use DataAnalyticsPrep;
+GO
+
+--  Pattern 4
+-- q1. Find the latest order per user
+select user_id, max(order_date)as latest_order from orders
+group by user_id
+
+select * from(
+select o.*, ROW_NUMBER()
+over (
+    partition by user_idmmere
+    order by order_Date DESC
+) as rnk
+from orders o
+ )t 
+ where rnk =1
