@@ -710,3 +710,13 @@
 --     group by user_id 
 -- )t;
 
+-- q8 monthly revenue split by payment method
+-- SELECT
+--     FORMAT(order_date, 'yyyy-MM') AS order_month,
+--     SUM(CASE WHEN payment_method = 'card' THEN order_amount ELSE 0 END) AS card_revenue,
+--     SUM(CASE WHEN payment_method = 'upi' THEN order_amount ELSE 0 END) AS upi_revenue,
+--     SUM(CASE WHEN payment_method = 'cash' THEN order_amount ELSE 0 END) AS cash_revenue
+-- FROM dbo.Orders
+-- GROUP BY FORMAT(order_date, 'yyyy-MM');
+
+--q9  
