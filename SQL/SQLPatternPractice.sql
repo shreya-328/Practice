@@ -719,12 +719,69 @@
 -- FROM dbo.Orders
 -- GROUP BY FORMAT(order_date, 'yyyy-MM');
 
---  q9. RANK PRODUCTS BY REVENUE    
-select product_id, total_revenue,
-DENSE_RANK() over(
-    order by total_revenue desc 
-)as product_rank from
-( 
-    select oi.product_id, sum(o.order_amount)as total_revenue from orders o
-join order_items oi on o.order_id = oi.order_id
-GROUP by oi.product_id) as t;
+
+-- pattern 6
+
+--  q1. RANK PRODUCTS BY REVENUE    
+-- select product_id, total_revenue,
+-- DENSE_RANK() over(
+--     order by total_revenue desc 
+-- )as product_rank from
+-- ( 
+--     select oi.product_id, sum(o.order_amount)as total_revenue from orders o
+-- join order_items oi on o.order_id = oi.order_id
+-- GROUP by oi.product_id) as t;
+
+-- q2 top 3 products per category
+
+-- use DataAnalyticsPrep;
+-- GO
+
+select 
+category,
+product_id,
+total_revenue
+from (
+select p.category,
+oi.product_id, 
+sum(o.order_amount) as total_revenue , 
+ROW_NUMBER() over(
+    PARTITION BY p.category
+    order BY sum(o.order_amount) desc
+)as rnk
+from Orders o 
+join order_items oi  
+on o.order_id = oi.order_id
+join products p 
+on oi.product_id = p.product_id
+group by p.category, oi.product_id
+)t 
+where rnk<=2;
+
+-- SELECT 
+--     o.order_id,
+--     oi.product_id,
+--     p.category
+-- FROM Orders o
+-- JOIN Order_Items oi
+--   ON o.order_id = oi.order_id
+-- JOIN Products p
+--   ON oi.product_id = p.product_id;
+
+-- SELECT * FROM Orders;
+-- SELECT * FROM Order_Items;
+-- SELECT * FROM Products;
+
+-- INSERT INTO Products (product_id, category, prod_name)
+-- VALUES
+-- (1, 'Electronics', 'Mobile'),
+-- (2, 'Electronics', 'Laptop'),
+-- (3, 'Clothing', 'T-Shirt'),
+-- (4, 'Clothing', 'Jeans'),
+-- (5, 'Home', 'Mixer'),
+-- (6, 'Footwear', 'Shoes'),
+-- (7, 'Sports', 'Football');
+
+-- ALTER TABLE Products
+-- DROP COLUMN catgory;
+
