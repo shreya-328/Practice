@@ -719,4 +719,12 @@
 -- FROM dbo.Orders
 -- GROUP BY FORMAT(order_date, 'yyyy-MM');
 
---q9  
+--  q9. RANK PRODUCTS BY REVENUE    
+select product_id, total_revenue,
+DENSE_RANK() over(
+    order by total_revenue desc 
+)as product_rank from
+( 
+    select oi.product_id, sum(o.order_amount)as total_revenue from orders o
+join order_items oi on o.order_id = oi.order_id
+GROUP by oi.product_id) as t;
