@@ -566,13 +566,69 @@
 -- )T where rnk = 1;
 
 -- q3. latest login per user
-select user_id, login_date 
-from(
-    select  
-    user_id, login_date,
-    ROW_NUMBER() OVER(
-        PARTITION BY user_id
-        ORDER BY login_date DESC
-    )as rnk
-    from logins
-)T where rnk = 1
+-- select user_id, login_date 
+-- from(
+--     select  
+--     user_id, login_date,
+--     ROW_NUMBER() OVER(
+--         PARTITION BY user_id
+--         ORDER BY login_date DESC
+--     )as rnk
+--     from logins
+-- )T where rnk = 1
+
+-- q4 latest order per user - what if dates are same (ties)
+-- SELECT user_id, order_id, order_date
+-- from(
+--     select user_id,
+--     order_id,
+--     order_date,
+--     DENSE_RANK() OVER(
+--         PARTITION BY user_id
+--         ORDER BY order_date DESC
+--     )as rnk
+--     from Orders
+-- )t where rnk=1
+
+-- q5 - Find latest order per seller
+--har seller id ka sbse laatest order chahiye
+
+-- select * 
+-- from(
+--     select *,
+--     ROW_NUMBER()
+--     over(
+--         partition by seller_id
+--         order by order_date desc
+--     )as rnk
+--     from Orders
+-- )t where rnk = 1
+
+-- q6 find the latest order per user per month
+-- select * from(
+--     select o.*,
+--     ROW_NUMBER() OVER(
+--         PARTITION BY user_id,
+--         FORMAT(order_date, 'yyyy-MM')
+--         order by order_date desc
+--     )as rnk
+--     from orders o
+-- ) t where rnk =1
+
+-- q7LATEST STATUS PER ORDER PER DAY
+-- select * from(
+--     select o.*,
+--     ROW_NUMBER()
+--     OVER(
+--         PARTITION BY user_id,
+--         -- FORMAT(order_date, 'yyyy-MM-DD')
+--         cast(order_date as DATE)
+--         order by order_date desc
+--     )as rnk 
+--     from orders o
+-- )T
+-- where rnk=1
+
+-- PATTERN 5 CONDITIONAL FORMATTING
+
+--q1
