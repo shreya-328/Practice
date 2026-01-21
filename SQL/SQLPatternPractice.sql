@@ -631,4 +631,82 @@
 
 -- PATTERN 5 CONDITIONAL FORMATTING
 
---q1
+-- q1. count total ordera by status (complete vs cancelled)
+-- SELECT
+-- count (*) as total_orders,
+-- SUM(CASE WHEN order_status = 'completed' THEN 1 ELSE 0 END) As completed,
+-- SUM(CASE WHEN order_status = 'cancelled' THEN 1 ELSE 0 END) as cancelled
+-- from orders
+
+-- q2 revenue by orde status
+-- select 
+-- sum(CASE 
+-- when order_status = 'completed'
+-- then order_amount else 0
+-- end  
+-- ) as completed_revenue,
+-- sum(case 
+-- when order_status = ' cancelled'
+--     then order_amount else 0
+--     end 
+-- ) as cancelled_revenue
+-- from orders
+
+-- q3 user-wise count of compelted orders
+-- select user_id,
+-- sum(
+--     CASE when order_status = 'completed' then 1 else 0 end
+-- ) as completed_orders
+-- from orders group by user_id
+
+-- q4 user wise revenue from completed ordes
+-- select user_id,
+-- sum(case when order_status = 'completed'
+-- then order_amount else 0 end)
+-- as completed_revenue
+-- from Orders group by user_id
+
+-- q5 multiple conditional metrics in one query (dashboard style)
+-- select user_id, count(*)as total_orders,
+-- SUM(
+--     CASE when order_status = 'completed'
+--     then 1 else 0
+--     end 
+-- )as completed_orders,
+-- sum (
+--     case when order_status = 'cancelled'
+--     then 1 else 0
+--     end
+-- )as cancelled_orders,
+-- sum(
+--     case when order_status = 'completed'
+--     then order_amount
+--     else 0 
+--     end
+-- )as completed_revenue
+-- from Orders
+-- group by user_id
+
+--q6  revenue form high value orders  > 10000
+-- select user_id, sum (
+--     case when order_amount>10000
+--     then order_amount else 0
+--     end
+-- ) as high_val_orders
+-- from orders
+-- group by user_id
+
+-- q7 new vs repeat customer
+-- select
+-- sum (
+--     case when order_count = 1 then 1 else 0 end
+-- ) as new_cust,
+-- sum(
+--     case when order_count>1 then 1 else 0 END
+-- )as repeat_cust
+-- from (
+--     select user_id, count(*) as order_count
+--     from orders 
+--     group by user_id 
+-- )t;
+
