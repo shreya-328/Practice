@@ -994,3 +994,25 @@ def count_pairs(n):
 
 n = 9
 print(count_pairs(n))
+
+try:
+    num1 = int(input('Enter Numerator: '))
+    num2 = int(input('Enter Denominator: '))
+    division = num1/num2
+    print(f'Result is: {division}')
+except:
+    print('Invalid input!')
+else:
+    print('Division is successful.')
+
+
+## Try 1 ##
+# Enter Numerator: 2
+# Enter Denominator: d
+# Invalid input!
+
+## Try 2 ##
+# Enter Numerator: 2
+# Enter Denominator: 1
+# Result is: 2.0
+# Division is successful.
