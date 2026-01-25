@@ -1016,3 +1016,17 @@ else:
 # Enter Denominator: 1
 # Result is: 2.0
 # Division is successful.
+
+class InputOutString(object):
+    def __init__(self):
+        self.s = ""
+
+    def getString(self):
+        self.s = input()
+    
+    def printString(self):
+        print(self.s.upper())
+
+strObj = InputOutString()
+strObj.getString()
+strObj.printString()
