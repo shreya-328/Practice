@@ -1030,3 +1030,23 @@ class InputOutString(object):
 strObj = InputOutString()
 strObj.getString()
 strObj.printString()
+def is_subsequence(s1, s2):
+    i, j = 0, 0
+    
+    # i pointer s1 ke liye, j pointer s2 ke liye
+    while i < len(s1) and j < len(s2):
+        if s1[i] == s2[j]:
+            i += 1  # Agar match mila toh s1 ka agla character dekho
+        j += 1      # s2 mein toh hamesha aage badhna hi hai
+    
+    # Agar i s1 ki length tak pahunch gaya, matlab saare characters mil gaye
+    return i == len(s1)
+
+# Example:
+string1 = "Ragi"
+string2 = "Roasting Sattu and Grains" # Isme R, a, g, i order mein hain
+
+if is_subsequence(string1, string2):
+    print(f"Yes, '{string1}' is a subsequence!")
+else:
+    print("No, it's not.")
