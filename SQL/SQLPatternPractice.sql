@@ -877,3 +877,22 @@
 -- ) t
 -- ORDER BY order_date;
 
+SELECT first_name,
+daily_total, order_date FROM(
+SELECT first_name, order_date, daily_total,
+RANK() OVER (
+PARTITION BY order_date
+ORDER BY daily_total DESC
+) as rnk
+FROM
+( 
+SELECT c.first_name, 
+o.order_date, SUM(o.total_order_cost) as daily_total
+FROM customer c 
+JOIN order o on c.id=o.cust_id 
+WHERE o.order_date BETWEEN ‘2025-02-01’ AND  ‘2025-05-01’
+GROUP BY  c.id, o.order_date
+) t
+) ranked
+WHERE rank = 1
+ORDER BY order_date;
