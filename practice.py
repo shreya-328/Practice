@@ -1072,10 +1072,17 @@
 # print(fact(no))
 
 # 3. dict = i : i*i
-def gendict(n):
-    d=dict()
-    for i in range(1,n+1):
-        d[i]=i*i
-    return d
-n=int(input())
-print(gendict(n))
+# def gendict(n):
+#     d=dict()
+#     for i in range(1,n+1):
+#         d[i]=i*i
+#     return d
+# n=int(input())
+# print(gendict(n))
+
+# sequence of coma seperated and generate a tuple
+values=input()
+l=values.split(",")
+t=tuple(l)
+print(l)
+print(t)
