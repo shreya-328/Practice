@@ -984,69 +984,77 @@
 
 
 #pair cube count
-def count_pairs(n):
-    count = 0
-    for a in range(1, n + 1):
-        for b in range(n + 1):
-            if a**3 + b**3 == n:
-                count += 1
-    return count
+# def count_pairs(n):
+#     count = 0
+#     for a in range(1, n + 1):
+#         for b in range(n + 1):
+#             if a**3 + b**3 == n:
+#                 count += 1
+#     return count
 
-n = 9
-print(count_pairs(n))
+# n = 9
+# print(count_pairs(n))
 
-try:
-    num1 = int(input('Enter Numerator: '))
-    num2 = int(input('Enter Denominator: '))
-    division = num1/num2
-    print(f'Result is: {division}')
-except:
-    print('Invalid input!')
-else:
-    print('Division is successful.')
+# try:
+#     num1 = int(input('Enter Numerator: '))
+#     num2 = int(input('Enter Denominator: '))
+#     division = num1/num2
+#     print(f'Result is: {division}')
+# except:
+#     print('Invalid input!')
+# else:
+#     print('Division is successful.')
 
 
-## Try 1 ##
-# Enter Numerator: 2
-# Enter Denominator: d
-# Invalid input!
+# ## Try 1 ##
+# # Enter Numerator: 2
+# # Enter Denominator: d
+# # Invalid input!
 
-## Try 2 ##
-# Enter Numerator: 2
-# Enter Denominator: 1
-# Result is: 2.0
-# Division is successful.
+# ## Try 2 ##
+# # Enter Numerator: 2
+# # Enter Denominator: 1
+# # Result is: 2.0
+# # Division is successful.
 
-class InputOutString(object):
-    def __init__(self):
-        self.s = ""
+# class InputOutString(object):
+#     def __init__(self):
+#         self.s = ""
 
-    def getString(self):
-        self.s = input()
+#     def getString(self):
+#         self.s = input()
     
-    def printString(self):
-        print(self.s.upper())
+#     def printString(self):
+#         print(self.s.upper())
 
-strObj = InputOutString()
-strObj.getString()
-strObj.printString()
-def is_subsequence(s1, s2):
-    i, j = 0, 0
+# strObj = InputOutString()
+# strObj.getString()
+# strObj.printString()
+# def is_subsequence(s1, s2):
+#     i, j = 0, 0
     
-    # i pointer s1 ke liye, j pointer s2 ke liye
-    while i < len(s1) and j < len(s2):
-        if s1[i] == s2[j]:
-            i += 1  # Agar match mila toh s1 ka agla character dekho
-        j += 1      # s2 mein toh hamesha aage badhna hi hai
+#     # i pointer s1 ke liye, j pointer s2 ke liye
+#     while i < len(s1) and j < len(s2):
+#         if s1[i] == s2[j]:
+#             i += 1  # Agar match mila toh s1 ka agla character dekho
+#         j += 1      # s2 mein toh hamesha aage badhna hi hai
     
-    # Agar i s1 ki length tak pahunch gaya, matlab saare characters mil gaye
-    return i == len(s1)
+#     # Agar i s1 ki length tak pahunch gaya, matlab saare characters mil gaye
+#     return i == len(s1)
 
-# Example:
-string1 = "Ragi"
-string2 = "Roasting Sattu and Grains" # Isme R, a, g, i order mein hain
+# # Example:
+# string1 = "Ragi"
+# string2 = "Roasting Sattu and Grains" # Isme R, a, g, i order mein hain
 
-if is_subsequence(string1, string2):
-    print(f"Yes, '{string1}' is a subsequence!")
-else:
-    print("No, it's not.")
+# if is_subsequence(string1, string2):
+#     print(f"Yes, '{string1}' is a subsequence!")
+# else:
+#     print("No, it's not.")
+
+
+# find all the numbers divisible by 7 but is not a multiple of 5 bw 2000 and 3200 both included
+l=[]
+for i in range(2000,3201):
+    if (i%7==0) & (i%5!=0):
+        l.append(str(i))
+print(','.join(l))
