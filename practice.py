@@ -1053,8 +1053,20 @@
 
 
 # find all the numbers divisible by 7 but is not a multiple of 5 bw 2000 and 3200 both included
-l=[]
-for i in range(2000,3201):
-    if (i%7==0) & (i%5!=0):
-        l.append(str(i))
-print(','.join(l))
+# l=[]
+# for i in range(2000,3201):
+#     if (i%7==0) & (i%5!=0):
+#         l.append(str(i))
+# print(','.join(l))
+
+# Factorial of a number
+def fact(no):
+    if no ==0 or no==1:
+        return 1
+    fact = 1
+    while no>0:
+        fact = fact * no
+        no=no-1
+    return fact
+no=int(input())
+print(fact(no))
