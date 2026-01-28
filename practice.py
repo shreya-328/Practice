@@ -1081,8 +1081,26 @@
 # print(gendict(n))
 
 # sequence of coma seperated and generate a tuple
-values=input()
-l=values.split(",")
-t=tuple(l)
-print(l)
-print(t)
+# values=input()
+# l=values.split(",")
+# t=tuple(l)
+# print(l)
+# print(t)
+
+# Define a class which has at least two methods: 
+# getString: to get a string from console input 
+# printString: to print the string in upper case. 
+# Also please include simple test function to test the class methods.
+
+class InputOutString:
+    def __init__(self):
+        self.text=""
+    def getString(self):
+        self.text=input()
+    def printString(self):
+        print(self.text.upper())
+def test():
+    strObj = InputOutString()
+    strObj.getString()
+    strObj.printString()
+test()
