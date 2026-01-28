@@ -1060,13 +1060,22 @@
 # print(','.join(l))
 
 # Factorial of a number
-def fact(no):
-    if no ==0 or no==1:
-        return 1
-    fact = 1
-    while no>0:
-        fact = fact * no
-        no=no-1
-    return fact
-no=int(input())
-print(fact(no))
+# def fact(no):
+#     if no ==0 or no==1:
+#         return 1
+#     fact = 1
+#     while no>0:
+#         fact = fact * no
+#         no=no-1
+#     return fact
+# no=int(input())
+# print(fact(no))
+
+# 3. dict = i : i*i
+def gendict(n):
+    d=dict()
+    for i in range(1,n+1):
+        d[i]=i*i
+    return d
+n=int(input())
+print(gendict(n))
