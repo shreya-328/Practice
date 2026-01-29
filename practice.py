@@ -1139,10 +1139,17 @@
 #q3. WAP that accepts sequence of lines as ip and prints line after making all characters
 # in the sentence capitalized
 
-def uppStr(s):
-    s1=""
-    for i in range(len(s)):
-        s1=s1+s[i].upper()
-    return s1
-s=input()
-print(uppStr(s))
+# def uppStr(s):
+#     s1=""
+#     for i in range(len(s)):
+#         s1=s1+s[i].upper()
+#     return s1
+# s=input()
+# print(uppStr(s))
+
+# Q3. Write a program that accepts a sequence of whitespace separated words as input 
+# and prints the words after removing all duplicate words and sorting them 
+# alphanumerically
+s = input()
+words = [word for word in s.split(" ")]
+print(" ".join(sorted(list(set(words)))))
