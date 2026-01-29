@@ -1124,14 +1124,25 @@
 # print(sqrt(no))
 
 # Q2. WAP which takes 2 digits, X,Y as input and generates a 2-dimensional array.
-input_str = input()
-dimensions=[int(x) for x in input_str.split(',')]
-rowNum=dimensions[0]
-colNum=dimensions[1]
-multilist = [[0 for col in range(colNum)] for row in range(rowNum)]
+# input_str = input()
+# dimensions=[int(x) for x in input_str.split(',')]
+# rowNum=dimensions[0]
+# colNum=dimensions[1]
+# multilist = [[0 for col in range(colNum)] for row in range(rowNum)]
 
-for row in range(rowNum):
-    for col in range(colNum):
-        multilist[row][col]= row*col
+# for row in range(rowNum):
+#     for col in range(colNum):
+#         multilist[row][col]= row*col
 
-print(multilist)
+# print(multilist)
+
+#q3. WAP that accepts sequence of lines as ip and prints line after making all characters
+# in the sentence capitalized
+
+def uppStr(s):
+    s1=""
+    for i in range(len(s)):
+        s1=s1+s[i].upper()
+    return s1
+s=input()
+print(uppStr(s))
