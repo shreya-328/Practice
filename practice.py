@@ -1092,15 +1092,34 @@
 # printString: to print the string in upper case. 
 # Also please include simple test function to test the class methods.
 
-class InputOutString:
-    def __init__(self):
-        self.text=""
-    def getString(self):
-        self.text=input()
-    def printString(self):
-        print(self.text.upper())
-def test():
-    strObj = InputOutString()
-    strObj.getString()
-    strObj.printString()
-test()
+# class InputOutString:
+#     def __init__(self):
+#         self.text=""
+#     def getString(self):
+#         self.text=input()
+#     def printString(self):
+#         print(self.text.upper())
+# def test():
+#     strObj = InputOutString()
+#     strObj.getString()
+#     strObj.printString()
+# test()
+
+# LEVEL - 2
+
+# WAP that calclates and prints the value according to the given formula
+# Q = sqrt[(2*C*D)/H] c & H = 50
+import math
+def sqrt(no):
+    C=50
+    H=30
+    val=no.split(',')
+    res=[]
+    for i in val:
+        Q = math.sqrt((2*C*int(i))/H)
+        res.append(str(round(Q)))
+
+    return ",".join(res)
+no=input()
+print(sqrt(no))
+
