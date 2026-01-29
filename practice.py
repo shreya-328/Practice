@@ -1109,17 +1109,29 @@
 
 # WAP that calclates and prints the value according to the given formula
 # Q = sqrt[(2*C*D)/H] c & H = 50
-import math
-def sqrt(no):
-    C=50
-    H=30
-    val=no.split(',')
-    res=[]
-    for i in val:
-        Q = math.sqrt((2*C*int(i))/H)
-        res.append(str(round(Q)))
+# import math
+# def sqrt(no):
+#     C=50
+#     H=30
+#     val=no.split(',')
+#     res=[]
+#     for i in val:
+#         Q = math.sqrt((2*C*int(i))/H)
+#         res.append(str(round(Q)))
 
-    return ",".join(res)
-no=input()
-print(sqrt(no))
+#     return ",".join(res)
+# no=input()
+# print(sqrt(no))
 
+# Q2. WAP which takes 2 digits, X,Y as input and generates a 2-dimensional array.
+input_str = input()
+dimensions=[int(x) for x in input_str.split(',')]
+rowNum=dimensions[0]
+colNum=dimensions[1]
+multilist = [[0 for col in range(colNum)] for row in range(rowNum)]
+
+for row in range(rowNum):
+    for col in range(colNum):
+        multilist[row][col]= row*col
+
+print(multilist)
