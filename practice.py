@@ -1186,14 +1186,28 @@ print(" ".join(sorted(list(set(words)))))
 # print("DIGITS", d["DIGITS"])
 
 # calculate no or digits
+# s = input()
+# d={"DIGITS":0, "LETTERS":0}
+# for c in s:
+#     if c.isdigit():
+#         d["DIGITS"]+=1
+#     elif c.isalpha():
+#         d["LETTERS"]+=1
+#     else:
+#         pass
+# print("LETTERS", d["LETTERS"])
+# print("DIGITS", d["DIGITS"])
+
+# Write a program that accepts a sentence and calculate 
+# the number of upper case letters and lower case letters.
 s = input()
-d={"DIGITS":0, "LETTERS":0}
+d={"UPPER CASE":0, "LOWER CASE":0}
 for c in s:
-    if c.isdigit():
-        d["DIGITS"]+=1
-    elif c.isalpha():
-        d["LETTERS"]+=1
+    if c.isupper():
+        d["UPPER CASE"]+=1
+    elif c.islower():
+        d["LOWER CASE"]+=1
     else:
         pass
-print("LETTERS", d["LETTERS"])
-print("DIGITS", d["DIGITS"])
+print("UPPER CASE", d["UPPER CASE"])
+print("LOWER CASE", d["LOWER CASE"])
