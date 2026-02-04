@@ -1155,14 +1155,32 @@ words = [word for word in s.split(" ")]
 print(" ".join(sorted(list(set(words)))))
 
 # find the maximum sum of any contiguous subarray of size k
-nums = [2, 1, 5, 1, 3, 2]
-k = 3
+# nums = [2, 1, 5, 1, 3, 2]
+# k = 3
 
-window_sum = sum(nums[:k])
-max_sum = window_sum
+# window_sum = sum(nums[:k])
+# max_sum = window_sum
 
-for i in range(k, len(nums)):
-    window_sum = window_sum + nums[i] - nums[i - k]
-    max_sum = max(max_sum, window_sum)
+# for i in range(k, len(nums)):
+#     window_sum = window_sum + nums[i] - nums[i - k]
+#     max_sum = max(max_sum, window_sum)
 
-print(max_sum)
+# print(max_sum)
+# values = []
+# for i in range(1000, 3001):
+#     s = str(i)
+#     if (int(s[0])%2==0) and (int(s[1])%2==0) and (int(s[2])%2==0) and (int(s[3])%2==0):
+#         values.append(s)
+# print(",".join(values))
+
+s = input()
+d={"DIGITS":0, "LETTERS":0}
+for c in s:
+    if c.isdigit():
+        d["DIGITS"]+=1
+    elif c.isalpha():
+        d["LETTERS"]+=1
+    else:
+        pass
+print("LETTERS", d["LETTERS"])
+print("DIGITS", d["DIGITS"])
