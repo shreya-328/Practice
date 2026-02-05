@@ -1150,9 +1150,9 @@
 # Q3. Write a program that accepts a sequence of whitespace separated words as input 
 # and prints the words after removing all duplicate words and sorting them 
 # alphanumerically
-s = input()
-words = [word for word in s.split(" ")]
-print(" ".join(sorted(list(set(words)))))
+# s = input()
+# words = [word for word in s.split(" ")]
+# print(" ".join(sorted(list(set(words)))))
 
 # find the maximum sum of any contiguous subarray of size k
 # nums = [2, 1, 5, 1, 3, 2]
@@ -1200,14 +1200,22 @@ print(" ".join(sorted(list(set(words)))))
 
 # Write a program that accepts a sentence and calculate 
 # the number of upper case letters and lower case letters.
-s = input()
-d={"UPPER CASE":0, "LOWER CASE":0}
-for c in s:
-    if c.isupper():
-        d["UPPER CASE"]+=1
-    elif c.islower():
-        d["LOWER CASE"]+=1
-    else:
-        pass
-print("UPPER CASE", d["UPPER CASE"])
-print("LOWER CASE", d["LOWER CASE"])
+# s = input()
+# d={"UPPER CASE":0, "LOWER CASE":0}
+# for c in s:
+#     if c.isupper():
+#         d["UPPER CASE"]+=1
+#     elif c.islower():
+#         d["LOWER CASE"]+=1
+#     else:
+#         pass
+# print("UPPER CASE", d["UPPER CASE"])
+# print("LOWER CASE", d["LOWER CASE"])
+
+#Write a program that computes the value of a+aa+aaa+aaaa with a given digit as the value of a.
+a = input()
+n1 = int( "%s" % a )
+n2 = int( "%s%s" % (a,a) )
+n3 = int( "%s%s%s" % (a,a,a) )
+n4 = int( "%s%s%s%s" % (a,a,a,a) )
+print(n1+n2+n3+n4)
