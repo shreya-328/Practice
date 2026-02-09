@@ -1212,26 +1212,49 @@
 # print("UPPER CASE", d["UPPER CASE"])
 # print("LOWER CASE", d["LOWER CASE"])
 
-#Write a program that computes the value of a+aa+aaa+aaaa with a given digit as the value of a.
-a = input()
-n1 = int( "%s" % a )
-n2 = int( "%s%s" % (a,a) )
-n3 = int( "%s%s%s" % (a,a,a) )
-n4 = int( "%s%s%s%s" % (a,a,a,a) )
-print(n1+n2+n3+n4)
+# #Write a program that computes the value of a+aa+aaa+aaaa with a given digit as the value of a.
+# a = input()
+# n1 = int( "%s" % a )
+# n2 = int( "%s%s" % (a,a) )
+# n3 = int( "%s%s%s" % (a,a,a) )
+# n4 = int( "%s%s%s%s" % (a,a,a,a) )
+# print(n1+n2+n3+n4)
 
-netAmount = 0
-while True:
-    s = input()
-    if not s:
-        break
-    values = s.split(" ")
-    operation = values[0]
-    amount = int(values[1])
-    if operation=="D":
-        netAmount+=amount
-    elif operation=="W":
-        netAmount-=amount
+# netAmount = 0
+# while True:
+#     s = input()
+#     if not s:
+#         break
+#     values = s.split(" ")
+#     operation = values[0]
+#     amount = int(values[1])
+#     if operation=="D":
+#         netAmount+=amount
+#     elif operation=="W":
+#         netAmount-=amount
+#     else:
+#         pass
+# print(netAmount)
+
+import re
+value = []
+items=[x for x in input().split(',')]
+for p in items:
+    if len(p)<6 or len(p)>12:
+        continue
     else:
         pass
-print(netAmount)
+    if not re.search("[a-z]",p):
+        continue
+    elif not re.search("[0-9]",p):
+        continue
+    elif not re.search("[A-Z]",p):
+        continue
+    elif not re.search("[$#@]",p):
+        continue
+    elif re.search("\s",p):
+        continue
+    else:
+        pass
+    value.append(p)
+print(",".join(value))
