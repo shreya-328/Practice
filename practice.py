@@ -1373,3 +1373,20 @@ class Solution:
                 ans += val
 
         return ans
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        lookup_set = set(["a","e","i","o","u","A","E","I","O","U"])
+
+        idx = []
+        ans = ""
+        for val in s:
+            if val in lookup_set:
+                idx.append(val)
+
+        for val in s:
+            if val in lookup_set:
+                ans += idx.pop()
+            else:
+                ans += val
+
+        return ans
