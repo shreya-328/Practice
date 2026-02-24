@@ -1354,3 +1354,22 @@ def bin_search(li, element):
 li=[2,5,7,9,11,17,222]
 print(bin_search(li,11))
 print(bin_search(li,12))
+
+
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        lookup_set = set(["a","e","i","o","u","A","E","I","O","U"])
+
+        idx = []
+        ans = ""
+        for val in s:
+            if val in lookup_set:
+                idx.append(val)
+
+        for val in s:
+            if val in lookup_set:
+                ans += idx.pop()
+            else:
+                ans += val
+
+        return ans
