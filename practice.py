@@ -1424,4 +1424,27 @@ class Solution:
             else:
                 return True
         return False
-        
+        #string compresssion
+class Solution:
+    def compress(self, chars: List[str]) -> int:
+        write = 0
+        i = 0
+
+        while i < len(chars):
+            curr = chars[i]
+            j = i
+            while j < len(chars) and chars[j] == curr:
+                j += 1 # this index will end at the start of the next group
+ 
+            chars[write] = curr # overwrite current one
+            write += 1 # next index after i
+
+            count = j - i # group size
+            if count > 1:
+                for c in str(count):
+                    chars[write] = c
+                    write += 1 # update position of write pointer. Note that if I move writer by the size of "count", it cannot account for cases like a2b3c -> it will become a2b3bc after this step. At the next iteration, chars[4]=b will be assigned to "c" instead.
+
+            i = j # move to next group
+
+        return write
