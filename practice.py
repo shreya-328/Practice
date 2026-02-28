@@ -1448,3 +1448,20 @@ class Solution:
             i = j # move to next group
 
         return write
+    
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        temp = []
+
+        for num in nums:
+            if num != 0:
+                temp.append(num)
+
+        for i in range(len(temp)):
+            nums[i] = temp[i]
+
+        for j in range(len(temp), len(nums)):
+            nums[j] = 0
+        
+        return nums
+        
