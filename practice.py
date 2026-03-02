@@ -1506,3 +1506,34 @@ class Solution:
             max_k_sum = max(cur_sum, max_k_sum)
         return max_k_sum / k
         
+
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+
+        # amount in the first k 
+        # store front and back 
+        # go letter by letter 
+        # if letter leaving is vowel -1 
+        # if letter coming in is vowel +1 
+
+        vowels = {"a","e","i","o","u"}
+        amount = len([character for character in s[:k] if character in vowels]) 
+        first_index = 0
+        max_amount = amount
+
+        for index,character in enumerate(s[k:]): 
+
+            if s[first_index] in vowels: 
+                amount-=1 
+            
+            if character in vowels: 
+                amount+=1
+
+            first_index+=1
+
+            if amount > max_amount: 
+                max_amount = amount
+
+        return max_amount
+
+        
