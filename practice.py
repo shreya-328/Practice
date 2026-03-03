@@ -1536,4 +1536,14 @@ class Solution:
 
         return max_amount
 
+class Solution:
+    def longestSubarray(self, nums):
+        left = zeros = ans = 0
+        for right, v in enumerate(nums):
+            zeros += (v == 0)
+            while zeros > 1:
+                zeros -= (nums[left] == 0)
+                left += 1
+            ans = max(ans, right - left)
+        return ans
         
