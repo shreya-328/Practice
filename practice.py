@@ -1565,3 +1565,26 @@ class Solution:
             m = max(m, r - l + 1)
         return m
         
+
+class Solution:
+    def equalPairs(self, grid: List[List[int]]) -> int:
+        rows = []
+        for i in range(len(grid)):
+            rows.append(grid[i])
+
+        cols = []
+        for j in range(len(grid)):
+            col = []
+            for i in range(len(grid)):
+                col.append(grid[i][j])
+            cols.append(col)
+
+        count = 0
+        for row in rows:
+            for col in cols:
+                if row == col:
+                    count += 1
+        
+        return count
+
+
