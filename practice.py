@@ -1615,3 +1615,12 @@ class Solution:
                 st.append(num)
         return st
         
+
+class Solution:
+    def largestAltitude(self, gain: List[int]) -> int:
+        p = 0
+        me = 0
+        for g in gain:
+            me += g
+            p = max(p, me)
+        return p
