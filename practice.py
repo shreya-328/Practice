@@ -1667,3 +1667,19 @@ class RecentCounter:
 # Your RecentCounter object will be instantiated and called as such:
 # obj = RecentCounter()
 # param_1 = obj.ping(t)
+
+
+
+class Solution:
+    def predictPartyVictory(self, senate: str) -> str:
+        active = deque()
+        spent = deque(senate)
+
+        while spent:
+            if active and active[0] != spent[0]:
+                spent.popleft()
+                spent.append(active.popleft())
+            else:
+                active.append(spent.popleft())
+        
+        return "Radiant" if active[0]=='R' else "Dire"
