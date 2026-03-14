@@ -1702,3 +1702,19 @@ class RecentCounter:
 # Your RecentCounter object will be instantiated and called as such:
 # obj = RecentCounter()
 # param_1 = obj.ping(t)
+
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        left_sum = 0
+        right_sum = sum(nums)
+
+        for index, element in enumerate(nums):
+            right_sum -= element
+            if left_sum == right_sum:
+                return index
+            left_sum += element
+        return -1        
+            
+                
+
+
