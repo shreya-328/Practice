@@ -1786,3 +1786,19 @@ class Solution:
                 if n==0:
                     return True
         return False
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev = None
+        curr = head
+        while curr:
+            nxt=curr.next   # 先記住下一個
+            curr.next=prev  # 反轉
+            prev=curr       # prev 前進
+            curr=nxt        # curr 前進
+        return prev
