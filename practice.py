@@ -1802,3 +1802,31 @@ class Solution:
             prev=curr       # prev 前進
             curr=nxt        # curr 前進
         return prev
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+        sums = []
+        c = [0]
+
+        def _walk(node, targetSum, sums, c):
+            sums.append(0)
+            for i in range(len(sums)):
+                sums[i] += node.val
+                if sums[i] == targetSum:
+                    c[0] += 1      
+            if node.left:
+                _walk(node.left, targetSum, sums.copy(), c)
+            if node.right:
+                _walk(node.right, targetSum, sums.copy(), c)
+        
+        if root:
+            _walk(root, targetSum, sums, c)
+        
+        return c[0]
