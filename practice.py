@@ -1998,3 +1998,19 @@ class Solution:
             anagram_map[sorted_word].append(word)
         
         return list(anagram_map.values())
+    
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        rows = [""] * numRows
+        if numRows == 1: 
+            return s
+        cycle_len = 2 * numRows - 2
+        
+        for i,char in enumerate(s): 
+            pos = i % cycle_len 
+            if pos < numRows: 
+                rows[pos] += char
+            else: 
+                rows[cycle_len - pos] +=char
+
+        return "".join(rows)
