@@ -2033,3 +2033,42 @@ class Solution:
                 rows[r].add(board[r][c])
                 squares[(r//3,c//3)].add(board[r][c])
         return True
+
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
+
+        for i, a in enumerate(nums):
+            # Edge Case: if first elem is greater than 0 then we are never getting the sum 0 so return
+            if a > 0:
+                break
+
+            # Skip consecutive Duplicates 
+            if i > 0 and a == nums[i - 1]:
+                continue
+
+            # set l and r
+            l, r = i + 1, len(nums) - 1
+
+            # find the pari of l, r if any, to sum a, l, r to 0
+            while l < r:
+                threeSum = a + nums[l] + nums[r]
+                if threeSum > 0:
+                    r -= 1
+                elif threeSum < 0:
+                    l += 1
+                else:
+                    # sum is 0
+                    res.append([a, nums[l], nums[r]])
+                    l += 1
+                    r -= 1
+
+                    # keep removing left and right if you find duplicates
+                    while nums[l] == nums[l - 1] and l < r:
+                        l += 1
+                    
+                    while nums[r] == nums[r + 1] and l < r:
+                        r -= 1
+
+        return res
